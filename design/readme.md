@@ -1,0 +1,1 @@
+Add all design files in this folder, i.e website skeleton, images, and more. 

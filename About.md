@@ -1,2 +1,2 @@
-# Add a paragraph of general functionality of proposed project 
-**Currently being dicussed** 
+# Add a paragraph of general functionality of proposed project
+The general function of our project is a similar website to StackOverflow as a 3-tier, multi-user website. This website will include question and answer capabilities with database back-end. Other general functions that we wanted to add besides questions and answers and replying capabilities were login and signup, ability to follow users, upvote questions, featured questions, ability to search questions, and customizable profiles. At the moment, we wanted to create our project on a specific category, and the category that we have chosen is food. We are hoping to provide an intuitive, simple, and pleasing interface that is both Mobile and Desktop friendly. Some things that we’d like to possibly add if we can get to it would be messaging functionality and login authentication through Google or Facebook.

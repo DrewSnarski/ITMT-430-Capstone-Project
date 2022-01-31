@@ -33,7 +33,7 @@
 > * Move your assigned tasks to "in progress" when started and "sprint 0X" once completed 
 > * Reach out to PM/team for any help via Slack 
 > * At least one meeting outside class 
-> * Contact Professor via Slack under #itm-capstone channel for any project related questions so team is informed as well 
+> * Contact Professor via Slack under #general channel for any project related questions so team is informed as well 
 > * Keep transparency; if you aren't able to get something done on time, inform the PM right away instead of making excuses
 > *** 
 > #### Channels

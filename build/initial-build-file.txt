@@ -24,7 +24,8 @@ sudo systemctl start mysql
 # contents of create-database.sql
 # CREATE DATABASE team01m DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 sudo mysql -u root -p < create-database.sql
-
+# Change mysql bind address
+sudo sed -i "s/.*bind-address.*/bind-address = 192.168.56.10/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # Front-end script
 #Install PIP
@@ -47,3 +48,17 @@ echo "database = my_db" >> /home/vagrant/.my.cnf
 sudo apt install python3-django
 python3 -m pip install Django
 python3 -m pip install --upgrade Pillow #Library for images interface with DB
+python3 -m pip install django-crispy-forms #Library for management of django forms
+
+#Create Django project
+mkdir /home/vagrant/website
+cd /home/vagrant/website
+django-admin startproject team01m
+
+#Django settings.py depends on /home/vagrant/.my.cnf to be present
+
+#Is this command required?
+python3 manage.py migrate
+
+#Start Django server
+python3 manage.py runserver 192.168.56.10:8000

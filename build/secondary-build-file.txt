@@ -1,0 +1,175 @@
+#bear in mind, I did this in a separate environment for testing purposes by the content should still be the same.
+
+#important commands
+ls = list all the files in the current repository / directory
+cd ~ = change to home directory
+cd .. = go back / up one directory
+cd [TAB] = autofill				{press the [TAB] button}
+
+installing python3, pip, and vim [Title]
+#We have to install python3 and pip, as these are the tools we will be using to manipulate Django.
+#https://linuxize.com/post/how-to-install-pip-on-ubuntu-20.04/
+sudo apt update
+sudo apt install python3
+sudo apt install python3-pip
+sudo apt install pyhton3.8-venv
+python3 --version
+pip --version
+#You will use a text editor to edit files and other programs. Personally I use VIM and recommend you do too.
+#If you have it, good! If not then run the line below. 
+sudo apt install vim
+#You could also choose to use nano.
+sudo nano -c [location of document]
+
+
+installing Django and creating google OAuth [Title]
+https://www.section.io/engineering-education/django-google-oauth/
+##Step 1
+
+python3 -m venv virtual
+source virtual/bin/activate
+(virtual)##~$ pip install django
+(virtual)##~$ django-admin startproject oauth_project .
+(virtual)##~$ python manage.py startapp oauth_app
+(virtual)##~$ python manage.py migrate
+sudo vim or nano -c ~/oauth_project/settings.py 
+
+###ADD THIS TO ~/oauth_project/settings.py IF NOT ALREADY THERE
+INSTALLED_APPS = [
+    #...
+    'django.contrib.sites',
+    'oauth_app',
+]
+
+##Step 2
+pip install django-allauth
+
+###ADD THIS TO ~/oauth_project/settings.py IF NOT ALREADY THERE
+INSTALLED_APPS = [
+    #...
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+]
+###ADD THIS TO THE BOTTOM OF ~/oauth_project/settings.py IF NOT ALREADY THERE
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+###ADD THIS TO ~/oauth_project/settings.py IF NOT ALREADY THERE
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+###ADD THIS TO ~/oauth_project/settings.py IF NOT ALREADY THERE
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+##Step 3
+cd ~ 
+$ mkdir templates
+$ cd templates
+$ touch index.html
+sudo vim or nano -c index.html
+
+###ADD THIS TO index.html IF NOT ALREADY THERE while in the templates directory
+{% load socialaccount %}
+<html>
+<body>
+<h1>My Google OAuth Project </h1>
+{% if user.is_authenticated %}
+  <p>Welcome, You are logged in as {{ user.username }}</p>
+{% else %}
+  <a href="{% provider_login_url 'google' %}">Login With Google</a>
+{% endif %}
+</body>
+</html>
+
+###ADD THIS TO ~/oauth_project/settings.py IF NOT ALREADY THERE
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],				#WARNING MAKE SURE THIS IS MAPPED TO THE TEMPLATES FOLDER!!!
+        'APP_DIRS': True,
+        #...
+    }
+]
+
+##Step 4
+###ADD THIS TO ~/oauth_project/urls.py
+#...
+from django.urls import path, include
+from django.views.generic import TemplateView
+from django.contrib.auth.views import LogoutView
+
+urlpatterns = [
+    #...
+    path('', TemplateView.as_view(template_name="index.html")),
+    path('accounts/', include('allauth.urls')),
+    path('logout', LogoutView.as_view()),
+]
+##Step 4
+#https://accounts.google.com/signin/v2/identifier?service=cloudconsole&passive=1209600&osid=1&continue=https%3A%2F%2Fconsole.developers.google.com%2Fapis&followup=https%3A%2F%2Fconsole.developers.google.com%2Fapis&flowName=GlifWebSignIn&flowEntry=ServiceLogin
+#Sign into Google Cloud API using your Hawk IIT email
+Create a new project
+Fill out the OAuth consent screen with [select internal]
+-App name: django-oauth
+-User Support email: hawk iit email
+-Technical email (email at the bottom): hawk iit email
+
+create a new OAuth client ID under Credentials
+Web application for the Application type
+
+Then, add:
+http://127.0.0.1:8000 under Authorized JavaScript origins.
+http://127.0.0.1:8000/accounts/google/login/callback/ under Authorized redirect URIs.
+
+After a successful OAuth client ID creation, copy Your Client ID and Your Client Secret, you will need them in step 5.
+
+##Step 5
+$ python manage.py migrate
+$ python manage.py createsuperuser
+$ python manage.py runserver
+
+http://127.0.0.1:8000/admin login with superuser account [python manage.py createsuperuser]
+Sites click Add and put 127.0.0.1:8000 as both the Domain name and Display name.
+
+Then, under Social Applications click Add and fill in the details as follows:
+
+Provider: Google
+Name: OAuth App
+Client id: <The client ID you created in step 4>
+Secret key: <The Secret key you created in step 4>
+Sites: 127.0.0.1:8000
+
+////////Common Errors
+fix to TEMPLATES 
+
+MERGE both TEMPLATES AT THE MIDDLE AND AT THE BOTTOM
+
+
+//////////////
+fix to TEMPLATES PATHING PROBLEM
+
+cp index.html ~/Templates/ while inside ~/oauth_project/templates$
+Then changed pathing in settings.py to [BASE_DIR / 'Templates'] {with a capital T instead of a lowercase one.}
+
+
+
+
+
+
+
+
+
+

@@ -26,6 +26,13 @@ sudo systemctl start mysql
 sudo mysql -u root -p < create-database.sql
 # Change mysql bind address
 sudo sed -i "s/.*bind-address.*/bind-address = 192.168.56.10/" /etc/mysql/mysql.conf.d/mysqld.cnf
+# Create vagrant user
+# contents of create-user.sql
+# CREATE USER 'vagrant'@'localhost' IDENTIFIED BY '2022-team01m';
+# GRANT ALL PRIVILEGES ON team01m.* TO 'vagrant'@'localhost' WITH GRANT OPTION;
+# CREATE USER 'vagrant'@'%' IDENTIFIED BY '2022-team01m';
+# GRANT ALL PRIVILEGES ON team01m.* TO 'vagrant'@'%' WITH GRANT OPTION;
+# FLUSH PRIVILEGES;
 
 # Front-end script
 #Install PIP
@@ -38,11 +45,12 @@ sudo apt-get install -y build-essential
 python3 -m pip install mysqlclient
 
 #Setup for DB connection
-echo "[client]" >> /home/vagrant/.my.cnf
-echo "host = 10.0.2.15" >> /home/vagrant/.my.cnf
-echo "user = root" >> /home/vagrant/.my.cnf
-echo "password = 2022-team01m" >> /home/vagrant/.my.cnf
-echo "database = my_db" >> /home/vagrant/.my.cnf
+echo -e "[mysqld]" > /home/vagrant/.my.cnf.user
+echo -e "[client]" >> /home/vagrant/.my.cnf
+echo -e "host = 10.0.2.15" >> /home/vagrant/.my.cnf
+echo -e "user = root" >> /home/vagrant/.my.cnf
+echo -e "password = 2022-team01m" >> /home/vagrant/.my.cnf
+#echo -e "database = team01m" >> /home/vagrant/.my.cnf
 
 #Django installs
 sudo apt install python3-django
@@ -62,3 +70,5 @@ python3 manage.py migrate
 
 #Start Django server
 python3 manage.py runserver 192.168.56.10:8000
+
+

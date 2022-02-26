@@ -1,0 +1,5 @@
+cd ~/website/stackprj
+# create user profile "bucket"
+python3 manage.py startapp stackusers
+# create q and a base "bucket"
+python3 manage.py startapp stackbase

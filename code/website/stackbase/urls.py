@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import path, include
+from django.contrib.auth.views import LogoutView
 from . import views
 
 app_name = 'stackbase'
@@ -6,7 +7,7 @@ app_name = 'stackbase'
 urlpatterns = [
     path('', views.welcome, name="welcome"),
     path('register_1/', views.register_1, name="register_1"),
-    path('login/', views.login, name="login"),
+    path('login/', views.login, name="google_login"),
     path('register_2/', views.register_2, name="register_2"),
     path('home/', views.home, name="home"),
     path('profile/', views.profile, name="profile"),
@@ -15,5 +16,7 @@ urlpatterns = [
     path('question_post/', views.question_post, name="question_post"),
     path('question_list/', views.question_list, name="question_list"),
     path('answer_comment/', views.answer_comment, name="answer_comment"),
+    path('accounts/', include('allauth.urls')),
+    path('logout', LogoutView.as_view(), name="logout"),
     
 ]

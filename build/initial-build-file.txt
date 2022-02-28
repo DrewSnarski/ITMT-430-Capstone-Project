@@ -61,7 +61,7 @@ python3 -m pip install django-crispy-forms #Library for management of django for
 #Create Django project
 mkdir /home/vagrant/website
 cd /home/vagrant/website
-django-admin startproject team01m
+django-admin startproject stackprj
 
 #Django settings.py depends on /home/vagrant/.my.cnf to be present
 
@@ -70,5 +70,3 @@ python3 manage.py migrate
 
 #Start Django server
 python3 manage.py runserver 192.168.56.10:8000
-
-

@@ -116,11 +116,11 @@ build {
 
   provisioner "file"{
     source = "./id_ed25519_build_server_key"
-    destination = "home/vagrant/.ssh/"
+    destination = "/home/vagrant/.ssh/"
   }
     provisioner "file"{
     source = "./config"
-    destination = "home/vagrant/.ssh/"
+    destination = "/home/vagrant/.ssh/"
   }
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"

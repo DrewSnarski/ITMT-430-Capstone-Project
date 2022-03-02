@@ -1,0 +1,5 @@
+CREATE USER 'vagrant'@'localhost' IDENTIFIED BY '2022-team01m';
+GRANT ALL PRIVILEGES ON team01m.* TO 'vagrant'@'localhost' WITH GRANT OPTION;
+CREATE USER 'vagrant'@'%' IDENTIFIED BY '2022-team01m';
+GRANT ALL PRIVILEGES ON team01m.* TO 'vagrant'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;

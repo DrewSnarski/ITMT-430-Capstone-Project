@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 set -e
 set -v
 
@@ -21,7 +21,7 @@ sudo apt-get install -y nginx firewalld
 #################################################################################
 # Change the value of XX to be your team GitHub Repo
 # Otherwise your clone operation will fail
-# The command: su - vagrant -c switches from root to the user vagrant to execute 
+# The command: su - vagrant -c switches from root to the user vagrant to execute
 # the git clone command
 ##################################################################################
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
@@ -33,4 +33,5 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 # https://firewalld.org/documentation/
 #################################################################################
 sudo firewall-cmd --zone=public --add-service=http --permanent
+sudo firewall-cmd --add-port=8000/tcp --permanent
 sudo firewall-cmd --reload

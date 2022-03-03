@@ -1,3 +1,10 @@
+# Create initial Django project
+mkdir /home/vagrant/website
+cd /home/vagrant/website
+django-admin startproject stackprj
+#Django settings.py depends on /home/vagrant/.my.cnf to be present
+
+# Create Django apps
 cd ~/website/stackprj
 # create user profile "bucket"
 python3 manage.py startapp stackusers
@@ -6,7 +13,5 @@ python3 manage.py startapp stackbase
 # follow steps at this website: https://devnote.in/how-to-set-up-google-authentication-with-django/
 # create Google oauth startapp
 python3 manage.py startapp stack_google_oauth
-python3 manage.py migrate
-pip install django-allauth
 python3 manage.py migrate
 python3 manage.py createsuperuser

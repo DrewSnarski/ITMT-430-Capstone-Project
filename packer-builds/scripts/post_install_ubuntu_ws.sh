@@ -43,7 +43,7 @@ sudo python3 -m pip install django-allauth
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 
 # Set IP address in environment
-. ~/set_ip_env.sh
+. /home/vagrant/set_ip_env.sh
 
 # set the /etc/hosts file to match hostname
 echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts

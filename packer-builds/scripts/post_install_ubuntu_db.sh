@@ -23,11 +23,10 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 # Create database and vagrant user (Greg E)                                             #
 ##################################################################################
 
-sudo export TEAMREPO=/home/vagrant/2022-team01m
+export TEAMREPO=/home/vagrant/2022-team01m
 sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo mysql < $TEAMREPO/build/create-database.sql
 sudo mysql < $TEAMREPO/build/create-user.sql
-sudo systemctl restart mariadb
 
 #################################################################################
 # Enable http in the firewall

@@ -21,18 +21,18 @@ sudo apt-get install -y nginx firewalld
 #Install PIP
 #Install pre-reqs
 sudo apt install -y python3-pip
-python3 -m pip install --upgrade pip
+sudo python3 -m pip install --upgrade pip
 sudo apt-get install -y python3-dev
 sudo apt-get install -y default-libmysqlclient-dev
 sudo apt-get install -y build-essential
-python3 -m pip install mysqlclient
+sudo python3 -m pip install mysqlclient
 
 #Django installs
 sudo apt install -y python3-django
-python3 -m pip install Django
-python3 -m pip install --upgrade Pillow #Library for images interface with DB
-python3 -m pip install django-crispy-forms #Library for management of django forms
-python3 -m pip install django-allauth
+sudo python3 -m pip install Django
+sudo python3 -m pip install --upgrade Pillow #Library for images interface with DB
+sudo python3 -m pip install django-crispy-forms #Library for management of django forms
+sudo python3 -m pip install django-allauth
 
 #################################################################################
 # Change the value of XX to be your team GitHub Repo

@@ -72,7 +72,7 @@ chmod u+x /home/vagrant/runserver.sh
 echo -e "pkill -f runserver" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
 
-chmod u+x $TEAMREPO/build/django-initialize.sh
+#chmod u+x $TEAMREPO/build/django-initialize.sh
 
 #################################################################################
 # Enable http in the firewall

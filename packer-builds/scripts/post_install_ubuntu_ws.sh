@@ -21,18 +21,18 @@ sudo apt-get install -y nginx firewalld
 #Install PIP
 #Install pre-reqs
 sudo apt install -y python3-pip
-sudo python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 sudo apt-get install -y python3-dev
 sudo apt-get install -y default-libmysqlclient-dev
 sudo apt-get install -y build-essential
-sudo python3 -m pip install mysqlclient
+python3 -m pip install mysqlclient
 
 #Django installs
 sudo apt install -y python3-django
-sudo python3 -m pip install Django
-sudo python3 -m pip install --upgrade Pillow #Library for images interface with DB
-sudo python3 -m pip install django-crispy-forms #Library for management of django forms
-sudo python3 -m pip install django-allauth
+python3 -m pip install Django
+python3 -m pip install --upgrade Pillow #Library for images interface with DB
+python3 -m pip install django-crispy-forms #Library for management of django forms
+python3 -m pip install django-allauth
 
 #################################################################################
 # Change the value of XX to be your team GitHub Repo
@@ -43,7 +43,7 @@ sudo python3 -m pip install django-allauth
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 
 # Set IP address in environment
-. /home/vagrant/set_ip_env.sh
+#. /home/vagrant/set_ip_env.sh
 
 # set the /etc/hosts file to match hostname
 echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts

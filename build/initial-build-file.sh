@@ -37,7 +37,7 @@ echo -e "user = root\npassword = 2022-team01m" >> ~/.my.cnf
 chmod u+r create-database.sql
 mysql < create-database.sql
 # Change mysql bind address
-#sudo sed -i "s/.*bind-address.*/bind-address = $IP_ADDR/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed -i "s/.*bind-address.*/bind-address = $IP_ADDR/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # Create vagrant user
 # contents of create-user.sql
@@ -83,7 +83,7 @@ python3 -m pip install django-allauth
 python3 manage.py migrate
 
 # Create Django superuser
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('vagrant', 'vagrant@iit.edu', '2022-team01m')" | python manage.py shell
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('vagrant', 'vagrant@iit.edu', '2022-team01m')" | python3 manage.py shell
 
 #Start Django server script
 echo -e "cd ~/website" > runserver.sh

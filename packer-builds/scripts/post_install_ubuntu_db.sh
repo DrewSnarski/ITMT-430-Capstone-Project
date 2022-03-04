@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 set -e
 set -v
 
@@ -13,11 +13,21 @@ sudo apt-get install -y mariadb-server firewalld
 #################################################################################
 # Change the value of XX to be your team GitHub Repo
 # Otherwise your clone operation will fail
-# The command: su - vagrant -c switches from root to the user vagrant to execute 
+# The command: su - vagrant -c switches from root to the user vagrant to execute
 # the git clone command
 ##################################################################################
 
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
+
+##################################################################################
+# Create database and vagrant user (Greg E)                                             #
+##################################################################################
+
+sudo export TEAMREPO=/home/vagrant/2022-team01m
+sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
+sudo mysql < $TEAMREPO/build/create-database.sql
+sudo mysql < $TEAMREPO/build/create-user.sql
+sudo systemctl restart mariadb
 
 #################################################################################
 # Enable http in the firewall

@@ -141,7 +141,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALLOWED_HOSTS = [
-    '192.168.56.10',
     'stackprj.com',
 ]
 
@@ -165,7 +164,6 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # Add redirect users to the base route after a successfully login or logout.
-SITE_ID = 2 
+SITE_ID = 2
 LOGIN_REDIRECT_URL = '/login'
 LOGOUT_REDIRECT_URL = '/'
-

@@ -21,7 +21,7 @@ Host github.com
    b. Mac or Windows Terminal- bash
       i. If you have any vagrant boxes currently running, execute halt script
          a. Windows Powershell - .\halt.ps1
-         b. Mac or Windows Terminal - ./halt.sh 
+         b. Mac or Windows Terminal - sh ./halt.sh 
 
 9) Execute remove-and-retrieve-and-add-vagrant-boxes script 
    a. Powershell - .\remove-and-retrieve-and-add-vagrant-boxes.ps1

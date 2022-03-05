@@ -1,12 +1,12 @@
 ﻿(In build server) 1) Go to where your Team repository is and do a git pull (Note: If you are doing this in Windows Powershell, you MUST run it as administrator)
-   a. If you do not yet have it, run git clone <git@github.com:illinoistech-itm/2022-team01m.git>
+   a. If you do not yet have it, run git clone git@github.com:illinoistech-itm/2022-team01m.git
 (In build server) 2) cd packer-builds - > ubuntu_20043_vanilla-multi-build
 (In build server) 3) Execute mv copy-of-variables.pkr.hcl variables.pkr.hcl
 (In build server) 4) Generate a new ssh key
    a. ssh-keygen -t ed25519
 		i. save it to /datadisk/home/(HAWKID)/2022-team01m/packer-builds/ubuntu_20043_vanilla-multi-build/id_ed25519_build_server_key
    b. Execute cat id_ed25519_build_server_key.pub and copy it
-(In build server) 5) Go to <https://github.com/illinoistech-itm/2022-team01m> , settings on the top row, deploy keys on the sidebar, add new deploy key. Paste your public key and give it a name
+(In build server) 5) Go to https://github.com/illinoistech-itm/2022-team01m , settings on the top row, deploy keys on the sidebar, add new deploy key. Paste your public key and give it a name
 (In build server) 6) Execute vim config. It should read the following and save (:wq)
 
 Host github.com

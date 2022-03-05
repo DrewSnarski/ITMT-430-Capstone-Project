@@ -25,15 +25,15 @@ Host github.com
 
 9) Execute remove-and-retrieve-and-add-vagrant-boxes script 
    a. Powershell - .\remove-and-retrieve-and-add-vagrant-boxes.ps1
-   b. Mac or Terminal - ./remove-and-retrieve-and-add-vagrant-boxes.sh
+   b. Mac or Terminal - sh ./remove-and-retrieve-and-add-vagrant-boxes.sh
 10) Run Up script
    a. Powershell - .\up.ps1
-   b. Mac or Terminal - ./up.sh
+   b. Mac or Terminal - sh ./up.sh
 11) cd to desired vagrant file (db, lb, ws1, ws2, ws3)
 12) Enter vagrant ssh
 13) The team repo is already pre-downloaded, so you can just cd right into it and make any changes you want.
    a. Note: Any changes made here are temporary and are removed when you run the remove-and-retrieve script. In order to save this code, it must be copied back out into your LOCAL HOST team repo and pushed back to Github
 14) After making necessary changes, exit the vagrant box and cd back to where you ran the remove-and-retrieve script and execute the halt script
    a. Powershell - .\halt.ps1
-   b. Mac or Terminal - ./halt.sh
+   b. Mac or Terminal - sh ./halt.sh
 15) Rinse and repeat steps 8-13

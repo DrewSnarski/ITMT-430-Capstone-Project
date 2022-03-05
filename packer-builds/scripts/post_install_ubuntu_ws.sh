@@ -51,26 +51,32 @@ echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
 export TEAMREPO=/home/vagrant/2022-team01m
 
 #Setup for DB connection
-echo -e "[mysqld]" > /home/vagrant/.my.cnf
-echo -e "[client]" >> /home/vagrant/.my.cnf
-echo -e "host = 192.168.56.105" >> /home/vagrant/.my.cnf
-echo -e "user = vagrant" >> /home/vagrant/.my.cnf
-echo -e "password = 2022-team01m" >> /home/vagrant/.my.cnf
-echo -e "database = team01m" >> /home/vagrant/.my.cnf
+echo "[mysqld]" > /home/vagrant/.my.cnf
+echo "[client]" >> /home/vagrant/.my.cnf
+echo "host = 192.168.56.105" >> /home/vagrant/.my.cnf
+echo "user = vagrant" >> /home/vagrant/.my.cnf
+echo "password = 2022-team01m" >> /home/vagrant/.my.cnf
+echo "database = team01m" >> /home/vagrant/.my.cnf
 
 ##########################################
 # Need to mv the Django code to homebase #
 ##########################################
 cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
+cp /home/vagrant/2022-team01m/build/django-initialize.sh.txt /home/vagrant/django-initialize.sh
+chmod u+x /home/vagrant/django-initialize.sh
+
 
 #Start Django server script
-echo -e "cd ~/website" > /home/vagrant/runserver.sh
-echo -e "python3 manage.py runserver 10.0.2.15:8000  > /dev/null 2>&1 &" >> /home/vagrant/runserver.sh
+echo "cd ~/website" > /home/vagrant/runserver.sh
+echo "sudo python3 manage.py runserver 0.0.0.0:8000  > /dev/null 2>&1 &" >> /home/vagrant/runserver.sh
 chmod u+x /home/vagrant/runserver.sh
 
 #Stop Django server script
-echo -e "pkill -f runserver" >> /home/vagrant/stopserver.sh
+echo "sudo pkill -f runserver" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
+
+# Fix vagrant file permissions
+sudo chown -R vagrant:vagrant /home/vagrant/.*
 
 #chmod u+x $TEAMREPO/build/django-initialize.sh
 

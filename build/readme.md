@@ -4,7 +4,7 @@
 (In build server) 3) Execute mv copy-of-variables.pkr.hcl variables.pkr.hcl
 (In build server) 4) Generate a new ssh key
    a. ssh-keygen -t ed25519
-		i. save it to /datadisk/home/(HAWKID)/2022-team01m/packer-builds/ubuntu_20043_vanilla-multi-build/id_ed25519_build_server_key
+		i. save it to /datadisk1/home/(HAWKID)/2022-team01m/packer-builds/ubuntu_20043_vanilla-multi-build/id_ed25519_build_server_key
    b. Execute cat id_ed25519_build_server_key.pub and copy it
 (In build server) 5) Go to https://github.com/illinoistech-itm/2022-team01m , settings on the top row, deploy keys on the sidebar, add new deploy key. Paste your public key and give it a name
 (In build server) 6) Execute vim config. It should read the following and save (:wq)

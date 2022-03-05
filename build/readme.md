@@ -13,7 +13,7 @@ Host github.com
    User (github username)
    Hostname github.com
 	StrictHostKeyChecking no
-	IdentityFile /home/vagrant/.ssh/id\_ed25519\_build\_server\_key
+	IdentityFile /home/vagrant/.ssh/id_ed25519_build_server_key
 
 7) exit build server and go to your local team01 repo
 8) cd to build -> 

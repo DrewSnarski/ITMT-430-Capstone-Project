@@ -1,22 +1,19 @@
-from django.urls import path, include
-from django.contrib.auth.views import LogoutView
+from django.urls import path
 from . import views
 
 app_name = 'stackbase'
 
 urlpatterns = [
-    path('', views.welcome, name="welcome"),
-    path('register_1/', views.register_1, name="register_1"),
-    path('login/', views.login, name="google_login"),
-    path('register_2/', views.register_2, name="register_2"),
-    path('home/', views.home, name="home"),
-    path('profile/', views.profile, name="profile"),
-    path('profile_edit/', views.profile_edit, name="profile_edit"),
-    path('question_ask/', views.question_ask, name="question_ask"),
-    path('question_post/', views.question_post, name="question_post"),
-    path('question_list/', views.question_list, name="question_list"),
-    path('answer_comment/', views.answer_comment, name="answer_comment"),
-    path('accounts/', include('allauth.urls')),
-    path('logout', LogoutView.as_view(), name="logout"),
-    
+    path('', views.home, name="home"),
+    path('about/', views.about, name="about"),
+
+    # CRUD Function
+    path('questions/', views.QuestionListView.as_view(), name="question-lists"),
+    path('questions/new/', views.QuestionCreateView.as_view(), name="question-create"),
+    path('questions/<int:pk>/', views.QuestionDetailView.as_view(), name="question-detail"),
+    path('questions/<int:pk>/update/', views.QuestionUpdateView.as_view(), name="question-update"),
+    path('questions/<int:pk>/delete/', views.QuestionDeleteView.as_view(), name="question-delete"),
+    path('questions/<int:pk>/comment/', views.AddCommentView.as_view(), name="question-comment"),
+    path('like/<int:pk>', views.like_view, name="like_post")
+
 ]

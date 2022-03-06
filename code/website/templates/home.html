@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv-"X-UA-Compatible" content="IE-edge">
-	<meta name="viewport" content="width-device-width, initial-scale-1.0">
-	<title>Food Question & Answer: Home</title>
-</head>
-<body>
-	<h1>Food Question & Answer: Home Page</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">We <span><3 </span> food!</h1>
+        <p class="hero-paragraph">
+           We bring people together to discover, discuss, and celebrate food.
+        </p>
+        <div class="hero-options">
+            <a href="{% url 'stackbase:question-lists' %}" class="btn btn-developers" style="margin-left: 5px;">Latest Questions</a>
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}

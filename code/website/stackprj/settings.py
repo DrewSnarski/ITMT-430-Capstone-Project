@@ -43,11 +43,12 @@ INSTALLED_APPS = [
     'stackbase',
     'stackusers',
     'crispy_forms',
-    'stack_google_oauth',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    'ckeditor',
+ #   'stack_google_oauth',
+ #   'allauth',
+ #   'allauth.account',
+ #   'allauth.socialaccount',
+ #   'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -131,9 +132,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+MEDIA_URL =  '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -150,25 +155,33 @@ ALLOWED_HOSTS = [
 ]
 
 # Google oauth
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend'
-]
+#AUTHENTICATION_BACKENDS = [
+#    'django.contrib.auth.backends.ModelBackend',
+#    'allauth.account.auth_backends.AuthenticationBackend'
+#]
 
 # Google as the OAuth provider
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+#SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#        'SCOPE': [
+#            'profile',
+#            'email',
+#        ],
+#        'AUTH_PARAMS': {
+#            'access_type': 'online',
+#        }
+#    }
+#}
 
 # Add redirect users to the base route after a successfully login or logout.
-SITE_ID = 2
-LOGIN_REDIRECT_URL = '/login'
-LOGOUT_REDIRECT_URL = '/'
+#SITE_ID = 2
+#LOGIN_REDIRECT_URL = '/login'
+#LOGOUT_REDIRECT_URL = '/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'stackbase:home'
+
+LOGIN_URL = 'login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

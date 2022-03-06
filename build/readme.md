@@ -21,14 +21,15 @@ Host github.com
    b. Mac or Windows Terminal- bash
       i. If you have any vagrant boxes currently running, execute halt script
          a. Windows Powershell - .\halt.ps1
-         b. Mac or Windows Terminal - sh ./halt.sh 
+         b. Mac or Windows Terminal - sh ./halt.sh (prior leading sh only needed for Mac, it seems)
+            1. If you are getting permission denied, try chmod +x ./(script).sh then re-run
 
 9) Execute remove-and-retrieve-and-add-vagrant-boxes script 
-   a. Powershell - .\remove-and-retrieve-and-add-vagrant-boxes.ps1
-   b. Mac or Terminal - sh ./remove-and-retrieve-and-add-vagrant-boxes.sh
+   a. Powershell - .\remove-and-retrieve-and-add-vagrant-boxes.ps1 01
+   b. Mac or Terminal - sh ./remove-and-retrieve-and-add-vagrant-boxes.sh 01
 10) Run Up script
    a. Powershell - .\up.ps1
-   b. Mac or Terminal - sh ./up.sh
+   b. Mac or Terminal - sh ./up.sh (prior leading sh only needed for Mac, it seems)
 11) cd to desired vagrant file (db, lb, ws1, ws2, ws3)
 12) Enter vagrant ssh
 13) The team repo is already pre-downloaded, so you can just cd right into it and make any changes you want.

@@ -63,8 +63,8 @@ echo "database = team01m" >> /home/vagrant/.my.cnf
 # Need to mv the Django code to homebase #
 ##########################################
 cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
-cp /home/vagrant/2022-team01m/build/django-initialize.sh.txt /home/vagrant/django-initialize.sh
-chmod u+x /home/vagrant/django-initialize.sh
+#cp /home/vagrant/2022-team01m/build/django-initialize.sh.txt /home/vagrant/django-initialize.sh
+#chmod u+x /home/vagrant/django-initialize.sh
 
 
 #Start Django server script
@@ -79,7 +79,8 @@ chmod u+x /home/vagrant/stopserver.sh
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*
 
-#chmod u+x $TEAMREPO/build/django-initialize.sh
+# Add Django start to crontab for autostart on boot
+(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
 
 #################################################################################
 # Enable http in the firewall

@@ -80,7 +80,7 @@ chmod u+x /home/vagrant/stopserver.sh
 sudo chown -R vagrant:vagrant /home/vagrant/.*
 
 # Add Django start to crontab for autostart on boot
-(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
+su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
 
 #################################################################################
 # Enable http in the firewall

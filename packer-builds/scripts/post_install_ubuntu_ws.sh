@@ -33,6 +33,7 @@ python3 -m pip install Django
 python3 -m pip install --upgrade Pillow #Library for images interface with DB
 python3 -m pip install django-crispy-forms #Library for management of django forms
 python3 -m pip install django-allauth
+python3 -m pip install django-ckeditor --upgrade
 
 #################################################################################
 # Change the value of XX to be your team GitHub Repo
@@ -68,11 +69,11 @@ chmod u+x /home/vagrant/django-initialize.sh
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/runserver.sh
-echo "sudo python3 manage.py runserver 0.0.0.0:8000  > /dev/null 2>&1 &" >> /home/vagrant/runserver.sh
+echo "python3 manage.py runserver 0.0.0.0:8000  > /dev/null 2>&1 &" >> /home/vagrant/runserver.sh
 chmod u+x /home/vagrant/runserver.sh
 
 #Stop Django server script
-echo "sudo pkill -f runserver" >> /home/vagrant/stopserver.sh
+echo "pkill -f runserver" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
 
 # Fix vagrant file permissions

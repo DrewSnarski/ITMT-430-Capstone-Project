@@ -27,6 +27,7 @@ export TEAMREPO=/home/vagrant/2022-team01m
 sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo mysql < $TEAMREPO/build/create-database.sql
 sudo mysql < $TEAMREPO/build/create-user.sql
+sudo mysql team01m < $TEAMREPO/build/team01m.sql
 
 #################################################################################
 # Enable http in the firewall

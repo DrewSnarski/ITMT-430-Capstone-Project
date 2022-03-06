@@ -1,0 +1,2 @@
+Except as modified for our purposes, website Django base source code is from:
+https://github.com/desphixs/Stackoverflow-Clone-with-django

@@ -139,6 +139,10 @@ build {
   }
 
   provisioner "shell" {
+    environment_vars = ["USERPASS=${var.non-root-user-for-database-password}",
+                      "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range}",
+                      "USERNAME=${var.non-root-user-for-database-username}",
+                      "DATABASE=${var.database-name}"]
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     script          = "../scripts/post_install_ubuntu_ws.sh"
     only            = ["virtualbox-iso.ws1","virtualbox-iso.ws2","virtualbox-iso.ws3"]
@@ -150,7 +154,7 @@ build {
   # an application -- but would be dangerous to hardcode.
   #########################################################################################
 
-      provisioner "shell" {
+    provisioner "shell" {
       environment_vars = ["USERPASS=${var.non-root-user-for-database-password}",
                           "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range}",
                           "USERNAME=${var.non-root-user-for-database-username}",

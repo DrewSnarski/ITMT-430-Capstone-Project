@@ -144,12 +144,6 @@ build {
     only            = ["virtualbox-iso.ws1","virtualbox-iso.ws2","virtualbox-iso.ws3"]
   }
 
-    provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_ubuntu_db.sh"
-    only            = ["virtualbox-iso.db"]
-  }
-
   #########################################################################################
   # Environment Vars are read from the variables.pkr.hcl file and are a way to pass user
   # variables -- things such as passwords that need to be set at run time and passed into
@@ -165,7 +159,7 @@ build {
       script          = "../scripts/post_install_ubuntu_db.sh"
       only            = ["virtualbox-iso.db"]
     }
-    
+
   post-processor "vagrant" {
     keep_input_artifact = false
     output              = "${var.build_artifact_location}{{ .BuildName }}.box"

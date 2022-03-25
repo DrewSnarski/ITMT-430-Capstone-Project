@@ -47,6 +47,9 @@ sed -i "s/\$ACCESSFROMIP/$ACCESSFROMIP/g" $TEAMREPO/build/*.sql
 sed -i "s/\$USERPASS/$USERPASS/g" $TEAMREPO/build/*.sql
 sed -i "s/\$USERNAME/$USERNAME/g" $TEAMREPO/build/*.sql
 sed -i "s/\$DATABASE/$DATABASE/g" $TEAMREPO/build/*.sql
+cat $TEAMREPO/build/create-database.sql
+cat $TEAMREPO/build/create-user.sql
+head $TEAMREPO/build/database.sql
 
 ##################################################################################
 # Create database and vagrant user (Greg E)                                             #

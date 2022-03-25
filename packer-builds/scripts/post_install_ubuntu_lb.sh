@@ -11,12 +11,49 @@ set -v
 sudo apt-get install -y nginx firewalld
 
 #################################################################################
+# Update /etc/hosts file
+#################################################################################
+
+echo "192.168.56.101     lb    lb.class.edu"    | sudo tee -a /etc/hosts
+echo "192.168.56.102     ws1   ws1.class.edu"   | sudo tee -a /etc/hosts
+echo "192.168.56.103     ws2   ws2.class.edu"   | sudo tee -a /etc/hosts
+echo "192.168.56.104     ws3   ws3.class.edu"   | sudo tee -a /etc/hosts
+echo "192.168.56.105     db    db.class.edu"    | sudo tee -a /etc/hosts
+
+#################################################################################
+# Set hostname
+#################################################################################
+sudo hostnamectl set-hostname lb
+
+#################################################################################
 # Change the value of XX to be your team GitHub Repo
 # Otherwise your clone operation will fail
 # The command: su - vagrant -c switches from root to the user vagrant to execute
 # the git clone command
 ##################################################################################
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
+export TEAMREPO=/home/vagrant/2022-team01m
+
+#################################################################################
+# Documentation for configuring load-balancing in Nginx
+#################################################################################
+# https://nginx.org/en/docs/http/load_balancing.html
+# https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl
+# https://ethitter.com/2016/05/generating-a-csr-with-san-at-the-command-line/
+# Nginx configurations
+# https://nginx.org/en/docs/beginners_guide.html
+# https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
+###########################################
+# Enable load-balancing and reverse proxy #
+###########################################
+sudo cp -v $TEAMREPO/code/nginx/default /etc/nginx/sites-enabled
+sudo cp -v $TEAMREPO/code/nginx/nginx.conf /etc/nginx/
+
+# Restart the Nginx service so it actualizes the updates just made
+sudo nginx -t
+sudo systemctl daemon-reload
+sudo systemctl reload nginx
+sudo systemctl restart nginx
 
 #################################################################################
 # Enable http in the firewall
@@ -27,12 +64,5 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 #################################################################################
 
 sudo firewall-cmd --zone=public --add-service=http --permanent
+#sudo firewall-cmd --zone=public --add-service=https --permanent
 sudo firewall-cmd --reload
-
-###########################################
-# Enable load-balancing and reverse proxy #
-###########################################
-sudo sed -i '/^http {/a \\n\tupstream django {\n\t\tleast_conn;\n\t\tip_hash;\n\t\tserver 192.168.56.102:8000;\n\t\tserver 192.168.56.103:8000;\n\t\tserver 192.168.56.104:8000;\n\t}\n' /etc/nginx/nginx.conf
-sudo sed -i '/^server {/a \\tserver_name stackprj.com;' /etc/nginx/sites-enabled/default
-sudo sed -i '/# First attempt/i \\t\tproxy_set_header Host $host;\n\t\tproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n\t\tproxy_set_header X-Forwarded-Proto $scheme;\n\t\tproxy_pass http://django;' /etc/nginx/sites-enabled/default
-sudo sed -i '\%try_files $uri $uri/ =404;% s/^/#/' /etc/nginx/sites-enabled/default

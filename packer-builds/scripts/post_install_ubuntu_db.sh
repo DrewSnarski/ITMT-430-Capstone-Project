@@ -52,18 +52,18 @@ sudo sed -i "s/.*bind-address.*/bind-address = $(cat /etc/hosts | grep db | awk 
 # with the USER variables passed from PACKER
 # There isn't a cleaner way to do this but at least its verbose
 #################################################################################
-export TEAMREPO=/home/vagrant/2022-team01m
-sed -i "s/\$ACCESSFROMIP/$ACCESSFROMIP/g" $TEAMREPO/build/*.sql
-sed -i "s/\$USERPASS/$USERPASS/g" $TEAMREPO/build/*.sql
-sed -i "s/\$USERNAME/$USERNAME/g" $TEAMREPO/build/*.sql
-sed -i "s/\$DATABASE/$DATABASE/g" $TEAMREPO/build/*.sql
+export TEAMREPO=/home/vagrant/2022-team01m/code/db
+sed -i "s/\$ACCESSFROMIP/$ACCESSFROMIP/g" $TEAMREPO/*.sql
+sed -i "s/\$USERPASS/$USERPASS/g" $TEAMREPO/*.sql
+sed -i "s/\$USERNAME/$USERNAME/g" $TEAMREPO/*.sql
+sed -i "s/\$DATABASE/$DATABASE/g" $TEAMREPO/*.sql
 
 ##################################################################################
 # Create database and vagrant user (Greg E)                                             #
 ##################################################################################
-sudo mysql < $TEAMREPO/build/create-database.sql
-sudo mysql < $TEAMREPO/build/create-user.sql
-sudo mysql $DATABASE < $TEAMREPO/build/database.sql
+sudo mysql < $TEAMREPO/create-database.sql
+sudo mysql < $TEAMREPO/create-user.sql
+sudo mysql $DATABASE < $TEAMREPO/database.sql
 
 #################################################################################
 # Linux systemd Firewall - firewalld https://firewalld.org/

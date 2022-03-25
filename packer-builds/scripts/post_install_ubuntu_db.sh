@@ -34,7 +34,17 @@ sudo hostnamectl set-hostname db
 
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 
-#sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
+#################################################################################
+# Changing the mysql bind address with a script to listen for external
+# connections
+# This is important because mysql by default only listens on localhost and needs
+# to be configured to listen for external connections
+# https://serverfault.com/questions/584607/changing-the-mysql-bind-address-within-a-script
+# https://en.wikipedia.org/wiki/Sed
+#################################################################################
+
+# If using mysql instead of MariaDB the path to the cnf file is /etc/mysql/mysql.conf.d/mysql.cnf
+# The command: $(cat /etc/hosts | grep db | awk '{ print $1 }') will retrieve the IP address of the db from the /etc/hosts file, a bit of a hack...
 sudo sed -i "s/.*bind-address.*/bind-address = $(cat /etc/hosts | grep db | awk '{ print $1 }')/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 #################################################################################
@@ -47,9 +57,6 @@ sed -i "s/\$ACCESSFROMIP/$ACCESSFROMIP/g" $TEAMREPO/build/*.sql
 sed -i "s/\$USERPASS/$USERPASS/g" $TEAMREPO/build/*.sql
 sed -i "s/\$USERNAME/$USERNAME/g" $TEAMREPO/build/*.sql
 sed -i "s/\$DATABASE/$DATABASE/g" $TEAMREPO/build/*.sql
-cat $TEAMREPO/build/create-database.sql
-cat $TEAMREPO/build/create-user.sql
-head $TEAMREPO/build/database.sql
 
 ##################################################################################
 # Create database and vagrant user (Greg E)                                             #

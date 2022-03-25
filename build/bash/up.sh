@@ -3,7 +3,7 @@
 # vagrant up command
 #########################################################################################
 # Declare and array of all the box names
-DIRECTORIES=( lb ws1 ws2 ws3 db )
+DIRECTORIES=( db lb ws1 ws2 ws3 )
 # Setting initial directory location
 echo "Setting initial directory location: "
 cd ../project

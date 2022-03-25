@@ -1,13 +1,14 @@
 #!/bin/bash
 set -e
 set -v
+export TEAMREPO=/home/vagrant/2022-team01m
 
 #################################################################################
 # Install additional packages and dependencies here
 # Make sure to leave the -y flag on the apt-get to auto accept the install
 # Firewalld is required
 #################################################################################
-sudo apt-get install -y nginx firewalld
+sudo apt-get install -y firewalld
 
 #################################################################################
 # Update /etc/hosts file
@@ -36,14 +37,23 @@ elif [ $IP == '192.168.56.104' ]
         sudo hostnamectl set-hostname ws3
 fi
 
-#################################################################################
+###################################################
 # Example how to install NodeJS
-#################################################################################
+###################################################
 # https://nodejs.org/en/download/
 # https://github.com/nodesource/distributions/blob/master/README.md
 # Using Ubuntu
-# curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-# sudo apt-get install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# This will use the package.json files to install all the applcation
+# needed packages and upgrade npm
+sudo npm install -g npm@8.5.2
+
+# This will install pm2 - a javascript process manager -- like systemd for
+# starting and stopping javascript applciations
+# https://pm2.io/
+sudo npm install pm2 -g
 
 #Install PIP
 #Install pre-reqs
@@ -70,13 +80,10 @@ python3 -m pip install django-ckeditor --upgrade
 ##################################################################################
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 
-# Set IP address in environment
-#. /home/vagrant/set_ip_env.sh
-
 # set the /etc/hosts file to match hostname
 echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
-
-export TEAMREPO=/home/vagrant/2022-team01m
+# set django startup file host ip
+sed -i "s/\host/$IP/g" $TEAMREPO/code/website/*.json
 
 #Setup for DB connection
 echo "[mysqld]" > /home/vagrant/.my.cnf
@@ -90,17 +97,15 @@ echo "database = $DATABASE" >> /home/vagrant/.my.cnf
 # Need to mv the Django code to homebase #
 ##########################################
 cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
-#cp /home/vagrant/2022-team01m/build/django-initialize.sh.txt /home/vagrant/django-initialize.sh
-#chmod u+x /home/vagrant/django-initialize.sh
-
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/runserver.sh
-echo "python3 manage.py runserver 0.0.0.0:8000  > /dev/null 2>&1 &" >> /home/vagrant/runserver.sh
+echo "pm2 start stackprj.json" >> /home/vagrant/runserver.sh
 chmod u+x /home/vagrant/runserver.sh
 
 #Stop Django server script
-echo "pkill -f runserver" >> /home/vagrant/stopserver.sh
+echo "cd ~/website" > /home/vagrant/stopserver.sh
+echo "pm2 stop stackprj.json" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
 
 # Fix vagrant file permissions
@@ -108,6 +113,16 @@ sudo chown -R vagrant:vagrant /home/vagrant/.*
 
 # Add Django start to crontab for autostart on boot
 #su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
+
+# Command to create a service handler and start that javascript app at boot time
+cd /home/vagrant/website
+pm2 startup
+# The pm2 startup command generates this command
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
+pm2 start stackprj.json
+pm2 save
+# Change ownership of the .pm2 meta-files after we create them
+sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
 
 #################################################################################
 # Enable http in the firewall

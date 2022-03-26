@@ -3,7 +3,7 @@
       [{
         name: "stackprj",
         script: "manage.py",
-        args: ["runserver", "host:8000"],
+        args: ["runserver", "0.0.0.0:8000"],
         exec_mode: "fork",
         instances: "1",
         wait_ready: true,

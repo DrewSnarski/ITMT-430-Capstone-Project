@@ -83,7 +83,7 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 # set the /etc/hosts file to match hostname
 echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
 # set django startup file host ip
-sed -i "s/host/$IP/g" $TEAMREPO/code/website/*.json
+#sed -i "s/host/$IP/g" $TEAMREPO/code/website/*.json
 
 ##########################################
 # Need to mv the Django code to homebase #
@@ -105,6 +105,7 @@ pm2 startup
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
 pm2 start stackprj.json
 pm2 save
+pm2 stop stackprj.json
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/runserver.sh

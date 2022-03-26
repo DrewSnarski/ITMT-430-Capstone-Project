@@ -112,19 +112,17 @@ chmod u+x /home/vagrant/stopserver.sh
 #su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
 
 # Command to create a service handler and start that javascript app at boot time
-su vagrant -
 cd /home/vagrant/website
-pm2 startup
+sudo pm2 startup
 # The pm2 startup command generates this command
-env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
-pm2 start stackprj.json
-# Fix vagrant file permissions
-sudo chown -R vagrant:vagrant /home/vagrant/.*
-pm2 save
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
+sudo pm2 start stackprj.json
+sudo pm2 save
 # Change ownership of the .pm2 meta-files after we create them
 sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
 
-
+# Fix vagrant file permissions
+sudo chown -R vagrant:vagrant /home/vagrant/.*
 
 #################################################################################
 # Enable http in the firewall

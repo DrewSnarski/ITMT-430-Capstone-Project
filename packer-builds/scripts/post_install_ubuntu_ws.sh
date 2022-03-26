@@ -83,7 +83,7 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 # set the /etc/hosts file to match hostname
 echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
 # set django startup file host ip
-sed -i "s/\host/$IP/g" $TEAMREPO/code/website/*.json
+sed -i "s/host/$IP/g" $TEAMREPO/code/website/*.json
 
 #Setup for DB connection
 echo "[mysqld]" > /home/vagrant/.my.cnf
@@ -108,21 +108,23 @@ echo "cd ~/website" > /home/vagrant/stopserver.sh
 echo "pm2 stop stackprj.json" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
 
-# Fix vagrant file permissions
-sudo chown -R vagrant:vagrant /home/vagrant/.*
-
 # Add Django start to crontab for autostart on boot
 #su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
 
 # Command to create a service handler and start that javascript app at boot time
+su vagrant -
 cd /home/vagrant/website
 pm2 startup
 # The pm2 startup command generates this command
-sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
+env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
 pm2 start stackprj.json
+# Fix vagrant file permissions
+sudo chown -R vagrant:vagrant /home/vagrant/.*
 pm2 save
 # Change ownership of the .pm2 meta-files after we create them
 sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
+
+
 
 #################################################################################
 # Enable http in the firewall

@@ -105,11 +105,6 @@ pm2 startup
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
 pm2 start stackprj.json
 pm2 save
-# Change ownership of the .pm2 meta-files after we create them
-sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
-
-# Fix vagrant file permissions
-sudo chown -R vagrant:vagrant /home/vagrant/.*
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/runserver.sh
@@ -120,6 +115,9 @@ chmod u+x /home/vagrant/runserver.sh
 echo "cd ~/website" > /home/vagrant/stopserver.sh
 echo "pm2 stop stackprj.json" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
+
+# Fix vagrant file permissions
+sudo chown -R vagrant:vagrant /home/vagrant/.*
 
 #################################################################################
 # Enable http in the firewall

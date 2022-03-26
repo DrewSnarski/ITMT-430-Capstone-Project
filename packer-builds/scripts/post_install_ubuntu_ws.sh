@@ -108,9 +108,14 @@ pm2 save
 pm2 stop stackprj.json
 
 #Start Django server script
-echo "cd ~/website" > /home/vagrant/runserver.sh
-echo "pm2 start stackprj.json" >> /home/vagrant/runserver.sh
-chmod u+x /home/vagrant/runserver.sh
+echo "cd ~/website" > /home/vagrant/startserver.sh
+echo "pm2 start stackprj.json" >> /home/vagrant/startserver.sh
+chmod u+x /home/vagrant/startserver.sh
+
+#Restart Django server script
+echo "cd ~/website" > /home/vagrant/restartserver.sh
+echo "pm2 restart stackprj.json" >> /home/vagrant/restartserver.sh
+chmod u+x /home/vagrant/restartserver.sh
 
 #Stop Django server script
 echo "cd ~/website" > /home/vagrant/stopserver.sh
@@ -118,6 +123,7 @@ echo "pm2 stop stackprj.json" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
 
 # Fix vagrant file permissions
+sleep 5
 sudo chown -R vagrant:vagrant /home/vagrant/.*
 
 #################################################################################

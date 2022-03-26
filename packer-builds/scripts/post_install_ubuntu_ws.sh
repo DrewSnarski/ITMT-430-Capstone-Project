@@ -24,7 +24,7 @@ echo "192.168.56.105     db    db.class.edu"    | sudo tee -a /etc/hosts
 # Code to use a decision tree to determine the ws IP and changing the hostname
 # accordingly
 #################################################################################
-IP=$(hostname -I | awk '{print $2}')
+export IP=$(hostname -I | awk '{print $2}')
 
 if [ $IP == '192.168.56.102' ]
     then
@@ -93,21 +93,6 @@ echo "user = $USERNAME" >> /home/vagrant/.my.cnf
 echo "password = $USERPASS" >> /home/vagrant/.my.cnf
 echo "database = $DATABASE" >> /home/vagrant/.my.cnf
 
-##########################################
-# Need to mv the Django code to homebase #
-##########################################
-cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
-
-#Start Django server script
-echo "cd ~/website" > /home/vagrant/runserver.sh
-echo "pm2 start stackprj.json" >> /home/vagrant/runserver.sh
-chmod u+x /home/vagrant/runserver.sh
-
-#Stop Django server script
-echo "cd ~/website" > /home/vagrant/stopserver.sh
-echo "pm2 stop stackprj.json" >> /home/vagrant/stopserver.sh
-chmod u+x /home/vagrant/stopserver.sh
-
 # Add Django start to crontab for autostart on boot
 #su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
 
@@ -123,6 +108,21 @@ sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.so
 
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*
+
+##########################################
+# Need to mv the Django code to homebase #
+##########################################
+cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
+
+#Start Django server script
+echo "cd ~/website" > /home/vagrant/runserver.sh
+echo "pm2 start stackprj.json" >> /home/vagrant/runserver.sh
+chmod u+x /home/vagrant/runserver.sh
+
+#Stop Django server script
+echo "cd ~/website" > /home/vagrant/stopserver.sh
+echo "pm2 stop stackprj.json" >> /home/vagrant/stopserver.sh
+chmod u+x /home/vagrant/stopserver.sh
 
 #################################################################################
 # Enable http in the firewall

@@ -85,6 +85,11 @@ echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
 # set django startup file host ip
 sed -i "s/host/$IP/g" $TEAMREPO/code/website/*.json
 
+##########################################
+# Need to mv the Django code to homebase #
+##########################################
+cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
+
 #Setup for DB connection
 echo "[mysqld]" > /home/vagrant/.my.cnf
 echo "[client]" >> /home/vagrant/.my.cnf
@@ -92,9 +97,6 @@ echo "host = 192.168.56.105" >> /home/vagrant/.my.cnf
 echo "user = $USERNAME" >> /home/vagrant/.my.cnf
 echo "password = $USERPASS" >> /home/vagrant/.my.cnf
 echo "database = $DATABASE" >> /home/vagrant/.my.cnf
-
-# Add Django start to crontab for autostart on boot
-#su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
 
 # Command to create a service handler and start that javascript app at boot time
 cd /home/vagrant/website
@@ -108,11 +110,6 @@ sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.so
 
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*
-
-##########################################
-# Need to mv the Django code to homebase #
-##########################################
-cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/runserver.sh

@@ -137,7 +137,7 @@ chmod u+x /home/vagrant/killserver.sh
 # Fix vagrant file permissions
 sleep 5
 sudo chown -R vagrant:vagrant /home/vagrant/.*
-sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
+#sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
 
 #################################################################################
 # Enable http in the firewall

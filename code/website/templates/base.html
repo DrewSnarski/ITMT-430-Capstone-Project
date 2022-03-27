@@ -43,7 +43,11 @@
 		   </ul>
 		   <ul class="nav-ul">
                        <li class="nav-item">
-			    <a href="{% url 'Logout' %}" class="nav-link">Logout</a>
+                {% if user.is_authenticated %}
+			    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-login">Log In</a>
+                {% endif %}
 		      </li>
 		  </ul>
                 </div>

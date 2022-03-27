@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-        
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +37,7 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   display:inline-block;
-  margin: 40px 8px 10px 8px; 
+  margin: 40px 8px 10px 8px;
   color: #cccccc;
 }
 
@@ -48,7 +48,7 @@ h2 {
 .wrapper {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 100%;
@@ -269,7 +269,7 @@ input[type=text]:placeholder {
 
 *:focus {
     outline: none;
-} 
+}
 
 #icon {
   width:60%;
@@ -287,14 +287,14 @@ a{
     <div class="wrapper fadeInDown" style="margin-top: 30px;">
         <div id="formContent">
           <!-- Tabs Titles -->
-          <h2 class="active"> <a href="" style="text-decoration: none;">Sign Up</a> </h2>
-          <h2 class="inactive underlineHover"><a href="" style="text-decoration: none;">Sign In</a> </h2>
+          <h2 class="active"> <a href="{% url 'register' %}" style="text-decoration: none;">Sign Up</a> </h2>
+          <h2 class="inactive underlineHover"><a href="{% url 'login' %}" style="text-decoration: none;">Sign In</a> </h2>
 
-      
+
           <!-- Icon -->
           <div class="fadeIn first">
           </div>
-      
+
           <!-- Login Form -->
           <!-- <form method="POST">
               {% csrf_token %}
@@ -309,12 +309,12 @@ a{
             <input type="submit" class="fadeIn fourth" value="Sign Up">
 
           </form>
-      
+
           <!-- Remind Passowrd -->
           <div id="formFooter">
             <p>Already have an account? <a class="underlineHover" href="{% url 'login' %}">Login </a></p>
           </div>
-      
+
         </div>
       </div>
 </body>

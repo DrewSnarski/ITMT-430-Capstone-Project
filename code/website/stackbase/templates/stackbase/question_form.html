@@ -21,7 +21,11 @@
             /* background: linear-gradient(230deg, orange 0%, yellow 100%); */
 
         }
-
+	    /* Phallyn Code  */
+        #logout-btn {
+	background-color: #0077cc;
+	border-color: #0077cc;
+	}
         .padding {
             padding-top: 6rem !important
         }
@@ -179,7 +183,7 @@
                                         <form action="" method="POST" enctype="multipart/form-data">
                                                 {% csrf_token %}
                                                 {{form|crispy}}
-                                                <button class="btn btn-success" id="logout-btn" type="submit">Post Question</button>
+                                                <button class="btn btn-success" id="logout-btn" type="submit">Submit</button>
                                                 <a style="text-decoration: none; " class="btn btn-outline-secondary" href="">Cancel</a>
                                                 <!-- <button class="btn btn-secondary" id="logout-btn" type="submit"><a id="fa" href="" style="color: white; text-decoration: none;">Go back</a></button> -->
                                         </form>

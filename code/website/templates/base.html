@@ -34,16 +34,16 @@
                     <div class="line"></div>
                 </div>
                 <div class="nav-dropdown-menu">
-                    <a href="/" class="current-link">Home</a>
+                    <a href="{% url 'home' %}" class="btn nav-link">Home</a>
 		    <ul class="nav-ul">
                         <li class="nav-item">
-		            <a href="/questions/" class="nav-link">Questions</a>
-		            <a href="/profile/" class="nav-link">Profile</a>
+		            <a href="{% url 'question_list' %}" class="nav-link">Questions</a>
+		            <a href="{% url 'profile' %}" class="btn nav-link">Profile</a>
 			</li>
 		   </ul>
 		   <ul class="nav-ul">
                        <li class="nav-item">
-			    <a href="/" class="nav-link">Logout</a>
+			    <a href="{% url 'Logout' %}" class="nav-link">Logout</a>
 		      </li>
 		  </ul>
                 </div>
@@ -54,7 +54,7 @@
                 <a href="{% url 'stackbase:home' %}" style="text-decoration: none; color: black;"><div class="nav-icon-text">stack <span class="nav-bold-text">project</span></a>
                 <!-- <div class="nav-icon-text">stack <span class="nav-bold-text">project</span> -->
 
-                
+
                 </div>
             </a>
         </div>
@@ -92,14 +92,14 @@
             </div>
             {% if user.is_authenticated %}
                 <a href="{% url 'profile' %}" class="btn btn-login">Profile</a>
-                <a href="{% url 'logout' %}" class="btn btn-register">Logout</a> 
+                <a href="{% url 'logout' %}" class="btn btn-register">Logout</a>
             {% else %}
                 <a href="{% url 'login' %}" class="btn btn-login">Log in</a>
-                <a href="{% url 'register' %}" class="btn btn-register">Sign up</a> 
+                <a href="{% url 'register' %}" class="btn btn-register">Sign up</a>
             {% endif %}
         </div>
-	
-	<!-- Greg added below code -->	
+
+	<!-- Greg added below code -->
 	{% if user.is_authenticated %}
         <div style="margin-top: 10px;">
            <div class="alert alert-success" role="alert">
@@ -121,7 +121,7 @@
     {% endif %}
     </div>
 
-        
+
 </header>
 
 <!-- Add block content here -->

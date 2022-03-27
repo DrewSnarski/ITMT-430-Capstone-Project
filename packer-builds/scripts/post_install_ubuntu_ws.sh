@@ -99,7 +99,7 @@ echo "password = $USERPASS" >> /home/vagrant/.my.cnf
 echo "database = $DATABASE" >> /home/vagrant/.my.cnf
 
 # Command to create a service handler and start that javascript app at boot time
-cd /home/vagrant/website
+#cd /home/vagrant/website
 chmod u+x /home/vagrant/website/pm2-django.sh
 #su - vagrant -c "pm2 -s startup" &
 # The pm2 startup command generates this command
@@ -107,8 +107,8 @@ chmod u+x /home/vagrant/website/pm2-django.sh
 #su - vagrant -c "pm2 start stackprj.json"
 #su - vagrant -c "pm2 save"
 #su - vagrant -c "pm2 stop stackprj.json"
-#sleep 5
-su - vagrant -c "source /home/vagrant/website/pm2-django.sh"
+su - vagrant -c "source /home/vagrant/website/pm2-django.sh" &
+sleep 10
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/startserver.sh

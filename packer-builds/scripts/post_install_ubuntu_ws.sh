@@ -78,7 +78,7 @@ python3 -m pip install django-ckeditor --upgrade
 # The command: su - vagrant -c switches from root to the user vagrant to execute
 # the git clone command
 ##################################################################################
-su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
+su - $USERNAME -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 
 # set the /etc/hosts file to match hostname
 echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
@@ -100,12 +100,12 @@ echo "database = $DATABASE" >> /home/vagrant/.my.cnf
 
 # Command to create a service handler and start that javascript app at boot time
 cd /home/vagrant/website
-runuser -l vagrant -c 'pm2 startup'
+su - $USERNAME -c "pm2 startup"
 # The pm2 startup command generates this command
-runuser -l vagrant -c 'sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant'
-runuser -l vagrant -c 'pm2 start stackprj.json'
-runuser -l vagrant -c 'pm2 save'
-runuser -l vagrant -c 'pm2 stop stackprj.json'
+su - $USERNAME -c "sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant"
+su - $USERNAME -c "pm2 start stackprj.json"
+su - $USERNAME -c "pm2 save"
+su - $USERNAME -c "pm2 stop stackprj.json"
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/startserver.sh

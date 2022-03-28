@@ -4,17 +4,17 @@
 * Django is configured to auto-start upon server boot using the PM2 service.
 To manually start Django, execute:
 ```
-pm2 start stackprj.json
+/home/vagrant/startserver.sh
 ```
 
 #### Stop Sequence
 * To stop Django, execute:
 ```
-pm2 stop stackprj.json
+/home/vagrant/stopserver.sh
 ```
 
 #### Status Sequence
 * To check the run status of Django, execute:
 ```
-pm2 status stackprj.json
+/home/vagrant/serverstatus.sh
 ```

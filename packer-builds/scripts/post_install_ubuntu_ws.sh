@@ -98,14 +98,12 @@ echo "user = $USERNAME" >> /home/vagrant/.my.cnf
 echo "password = $USERPASS" >> /home/vagrant/.my.cnf
 echo "database = $DATABASE" >> /home/vagrant/.my.cnf
 
+#Autostart Django
 # Command to create a service handler and start that javascript app at boot time
 chmod u+x /home/vagrant/website/pm2-django.sh
 cd /home/vagrant/website
 su - vagrant -c "pm2 startup" &
 sleep 10
-# The pm2 startup command generates this command
-#su - vagrant -c "sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant"
-#su - vagrant -c "pm2 start stackprj.json"
 su - vagrant -c "source /home/vagrant/website/pm2-django.sh"
 
 #Start Django server script
@@ -132,13 +130,11 @@ chmod u+x /home/vagrant/runserver.sh
 echo "pkill -f runserver" >> /home/vagrant/killserver.sh
 chmod u+x /home/vagrant/killserver.sh
 
-#Autostart Django
-#export EDITOR=/usr/bin/vim.basic
-#su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") | grep -v "no crontab" | sort | uniq | crontab -"
-
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*
-#sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
+
+#Cleanup
+rm -v /home/vagrant/website/pm2-django.sh
 
 #################################################################################
 # Enable http in the firewall

@@ -132,6 +132,10 @@ chmod u+x /home/vagrant/runserver.sh
 echo "pkill -f runserver" >> /home/vagrant/killserver.sh
 chmod u+x /home/vagrant/killserver.sh
 
+#Autostart Django
+export EDITOR=/usr/bin/vim.basic
+su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
+
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*
 #sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock

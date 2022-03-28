@@ -112,9 +112,9 @@ echo "pm2 start stackprj.json" >> /home/vagrant/startserver.sh
 chmod u+x /home/vagrant/startserver.sh
 
 #Restart Django server script
-echo "cd ~/website" > /home/vagrant/restartserver.sh
-echo "pm2 restart stackprj.json" >> /home/vagrant/restartserver.sh
-chmod u+x /home/vagrant/restartserver.sh
+echo "cd ~/website" > /home/vagrant/serverstatus.sh
+echo "pm2 status stackprj.json" >> /home/vagrant/serverstatus.sh
+chmod u+x /home/vagrant/serverstatus.sh
 
 #Stop Django server script
 echo "cd ~/website" > /home/vagrant/stopserver.sh
@@ -122,13 +122,13 @@ echo "pm2 stop stackprj.json" >> /home/vagrant/stopserver.sh
 chmod u+x /home/vagrant/stopserver.sh
 
 #Runserver Django server script
-echo "cd ~/website" > /home/vagrant/runserver.sh
-echo "python3 manage.py runserver 0.0.0.0:8000  > /dev/null 2>&1 &" >> /home/vagrant/runserver.sh
-chmod u+x /home/vagrant/runserver.sh
+#echo "cd ~/website" > /home/vagrant/runserver.sh
+#echo "python3 manage.py runserver 0.0.0.0:8000  > /dev/null 2>&1 &" >> /home/vagrant/runserver.sh
+#chmod u+x /home/vagrant/runserver.sh
 
 #Stop Django server script
-echo "pkill -f runserver" >> /home/vagrant/killserver.sh
-chmod u+x /home/vagrant/killserver.sh
+#echo "pkill -f runserver" >> /home/vagrant/killserver.sh
+#chmod u+x /home/vagrant/killserver.sh
 
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*

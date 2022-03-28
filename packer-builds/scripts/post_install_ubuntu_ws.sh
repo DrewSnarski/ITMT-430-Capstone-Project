@@ -134,7 +134,7 @@ chmod u+x /home/vagrant/killserver.sh
 
 #Autostart Django
 export EDITOR=/usr/bin/vim.basic
-su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -"
+su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") | grep -v "no crontab" | sort | uniq | crontab -"
 
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*

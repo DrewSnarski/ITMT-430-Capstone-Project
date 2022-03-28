@@ -99,9 +99,9 @@ echo "password = $USERPASS" >> /home/vagrant/.my.cnf
 echo "database = $DATABASE" >> /home/vagrant/.my.cnf
 
 # Command to create a service handler and start that javascript app at boot time
-#cd /home/vagrant/website
 chmod u+x /home/vagrant/website/pm2-django.sh
-#pm2 startup
+pm2 startup
+cd /home/vagrant/website
 # The pm2 startup command generates this command
 #su - vagrant -c "sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant"
 #su - vagrant -c "pm2 start stackprj.json"
@@ -133,8 +133,8 @@ echo "pkill -f runserver" >> /home/vagrant/killserver.sh
 chmod u+x /home/vagrant/killserver.sh
 
 #Autostart Django
-export EDITOR=/usr/bin/vim.basic
-su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") | grep -v "no crontab" | sort | uniq | crontab -"
+#export EDITOR=/usr/bin/vim.basic
+#su - vagrant -c "(crontab -l ; echo "@reboot /home/vagrant/runserver.sh") | grep -v "no crontab" | sort | uniq | crontab -"
 
 # Fix vagrant file permissions
 sudo chown -R vagrant:vagrant /home/vagrant/.*

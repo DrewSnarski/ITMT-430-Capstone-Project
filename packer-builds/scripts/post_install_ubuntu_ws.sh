@@ -100,13 +100,13 @@ echo "database = $DATABASE" >> /home/vagrant/.my.cnf
 
 # Command to create a service handler and start that javascript app at boot time
 chmod u+x /home/vagrant/website/pm2-django.sh
-pm2 startup
 cd /home/vagrant/website
+su - vagrant -c "pm2 startup" &
+sleep 10
 # The pm2 startup command generates this command
 #su - vagrant -c "sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant"
 #su - vagrant -c "pm2 start stackprj.json"
-su - vagrant -c "source /home/vagrant/website/pm2-django.sh" &
-sleep 10
+su - vagrant -c "source /home/vagrant/website/pm2-django.sh"
 
 #Start Django server script
 echo "cd ~/website" > /home/vagrant/startserver.sh

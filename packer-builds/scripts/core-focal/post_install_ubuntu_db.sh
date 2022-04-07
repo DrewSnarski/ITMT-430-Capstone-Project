@@ -31,8 +31,8 @@ fi
 # The command: su - vagrant -c switches from root to the user vagrant to execute 
 # the git clone command
 ##################################################################################
-su - vagrant -c "git clone git@github.com:illinoistech-itm/team-00.git"
-cd team-00/code/
+su - vagrant -c "git clone git@github.com:illinoistech-itm/team-01.git"
+cd team-01/code/
 #################################################################################
 # Linux systemd Firewall - firewalld https://firewalld.org/
 # Remember to open proper firewall ports
@@ -91,7 +91,7 @@ sed -i "s/\$ACCESSFROMIP/$ACCESSFROMIP/g" ./db-samples/*.sql
 sed -i "s/\$USERPASS/$USERPASS/g" ./db-samples/*.sql
 sed -i "s/\$USERNAME/$USERNAME/g" ./db-samples/*.sql
 
-sudo mysql < /home/vagrant/team-00/code/db-samples/create-database.sql
-sudo mysql < /home/vagrant/team-00/code/db-samples/create-table.sql
-sudo mysql < /home/vagrant/team-00/code/db-samples/create-user-with-permissions.sql
-sudo mysql < /home/vagrant/team-00/code/db-samples/insert-records.sql
+sudo mysql < /home/vagrant/team-01/code/db-samples/create-database.sql
+sudo mysql < /home/vagrant/team-01/code/db-samples/create-table.sql
+sudo mysql < /home/vagrant/team-01/code/db-samples/create-user-with-permissions.sql
+sudo mysql < /home/vagrant/team-01/code/db-samples/insert-records.sql

@@ -31,8 +31,8 @@ fi
 # https://nodejs.org/en/download/
 # https://github.com/nodesource/distributions/blob/master/README.md
 # Using Ubuntu
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
+#curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+#sudo apt-get install -y nodejs
 
 #################################################################################
 # Change the value of XX to be your team GitHub Repo
@@ -40,8 +40,8 @@ sudo apt-get install -y nodejs
 # The command: su - vagrant -c switches from root to the user vagrant to execute 
 # the git clone command
 ##################################################################################
-su - vagrant -c "git clone git@github.com:illinoistech-itm/team-00.git"
-cd /home/vagrant/team-00/code/express-static-app
+su - vagrant -c "git clone git@github.com:illinoistech-itm/team-01.git"
+cd /home/vagrant/team-01/code/express-static-app
 
 # This will use the package.json files to install all the applcation 
 # needed packages and upgrade npm

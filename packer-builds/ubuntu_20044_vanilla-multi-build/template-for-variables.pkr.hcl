@@ -49,6 +49,12 @@ variable "restrict-firewall-access-to-this-ip-range-proxmox" {
   default = ""
 }
 
+variable "database-name" {
+  type = string
+  sensitive = true
+  default = ""
+}
+
 //  variables for PROXMOX Cloud Instances
 
 // For those variables that you don't provide a default for, you must

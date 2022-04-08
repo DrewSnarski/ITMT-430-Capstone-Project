@@ -423,7 +423,8 @@ build {
     environment_vars = ["USERPASS=${var.non-root-user-for-database-password}",
                         "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range-virtualbox}",
                         "USERNAME=${var.non-root-user-for-database-username}",
-                        "NUMBER=${var.TEAMNUMBER}"]
+                        "NUMBER=${var.TEAMNUMBER}",
+                        "DATABASE=${var.database-name}"]
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     script          = "../scripts/core-focal/post_install_ubuntu_db.sh"
     only            = ["virtualbox-iso.db"]
@@ -460,7 +461,8 @@ build {
     environment_vars = ["USERPASS=${var.non-root-user-for-database-password}",
                         "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range-proxmox}",
                         "USERNAME=${var.non-root-user-for-database-username}",
-                        "NUMBER=${var.TEAMNUMBER}"]
+                        "NUMBER=${var.TEAMNUMBER}",
+                        "DATABASE=${var.database-name}"]
     script          = "../scripts/core-focal/post_install_ubuntu_db.sh"
     only            = ["proxmox-iso.db"]
   }

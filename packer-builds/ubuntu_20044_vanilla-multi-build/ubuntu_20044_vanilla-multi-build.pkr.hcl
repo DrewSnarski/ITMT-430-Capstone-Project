@@ -287,7 +287,7 @@ build {
   sources = ["source.virtualbox-iso.lb","source.virtualbox-iso.ws1","source.virtualbox-iso.ws2","source.virtualbox-iso.ws3","source.virtualbox-iso.db","source.proxmox-iso.lb", "source.proxmox-iso.ws", "source.proxmox-iso.db"]
 
   provisioner "file" {
-    source = "./id_ed25519_github_deploy_key"
+    source = "./id_ed25519_build_server_key"
     destination = "/home/vagrant/.ssh/"
   }
 

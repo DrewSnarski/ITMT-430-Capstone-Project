@@ -31,8 +31,8 @@ fi
 # The command: su - vagrant -c switches from root to the user vagrant to execute 
 # the git clone command
 ##################################################################################
-su - vagrant -c "git clone git@github.com:illinoistech-itm/team-01.git"
-cd team-01/code/
+su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
+cd 2022-team01m/code/
 #################################################################################
 # Linux systemd Firewall - firewalld https://firewalld.org/
 # Remember to open proper firewall ports
@@ -74,24 +74,25 @@ else
 fi
 
 #################################################################################
-# To execute .sql files to create tables, databases, and insert records
-# modern versions of mariadb and mysql don't have a root password for the root 
-# user they control access via sudo permissions... which is great for security
-# and automation
-# These next 4 lines will create a simple database, a table, a non-root user
-# with limited permissions (adjust accordingly) and finally insert 3 dummy records
-#################################################################################
-
-#################################################################################
 # Using sed to replace placeholder variables in the code/db-samples/*.sql files
 # with the USER variables passed from PACKER
 # There isn't a cleaner way to do this but at least its verbose
 #################################################################################
-sed -i "s/\$ACCESSFROMIP/$ACCESSFROMIP/g" ./db-samples/*.sql
-sed -i "s/\$USERPASS/$USERPASS/g" ./db-samples/*.sql
-sed -i "s/\$USERNAME/$USERNAME/g" ./db-samples/*.sql
+export TEAMREPO=/home/vagrant/2022-team01m/code/db
+sed -i "s/\$ACCESSFROMIP/$ACCESSFROMIP/g" $TEAMREPO/*.sql
+sed -i "s/\$USERPASS/$USERPASS/g" $TEAMREPO/*.sql
+sed -i "s/\$USERNAME/$USERNAME/g" $TEAMREPO/*.sql
+sed -i "s/\$DATABASE/$DATABASE/g" $TEAMREPO/*.sql
 
-sudo mysql < /home/vagrant/team-01/code/db-samples/create-database.sql
-sudo mysql < /home/vagrant/team-01/code/db-samples/create-table.sql
-sudo mysql < /home/vagrant/team-01/code/db-samples/create-user-with-permissions.sql
-sudo mysql < /home/vagrant/team-01/code/db-samples/insert-records.sql
+##################################################################################
+# Create database and vagrant user (Greg E)                                             #
+##################################################################################
+sudo mysql < $TEAMREPO/create-database.sql
+sudo mysql < $TEAMREPO/create-user.sql
+sudo mysql $DATABASE < $TEAMREPO/database.sql
+
+#################################################################################
+# Linux systemd Firewall - firewalld https://firewalld.org/
+# Remember to open proper firewall ports
+#################################################################################
+# Open firewall port for port 3306/tcp

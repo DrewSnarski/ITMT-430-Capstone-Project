@@ -31,7 +31,7 @@ fi
 # The command: su - vagrant -c switches from root to the user vagrant to execute 
 # the git clone command
 ##################################################################################
-su - vagrant -c "git clone git@github.com:illinoistech-itm/team-01.git"
+su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 
 #################################################################################
 # Documentation for configuring load-balancing in Nginx
@@ -44,8 +44,8 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/team-01.git"
 # Nginx configurations
 # https://nginx.org/en/docs/beginners_guide.html
 # https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
-sudo cp -v /home/vagrant/team-01/code/nginx/default /etc/nginx/sites-enabled
-sudo cp -v /home/vagrant/team-01/code/nginx/nginx.conf /etc/nginx/
+sudo cp -v /home/vagrant/2022-team01m/code/nginx/default /etc/nginx/sites-enabled
+sudo cp -v /home/vagrant/2022-team01m/code/nginx/nginx.conf /etc/nginx/
 
 # Check nginx syntax with -t
 #sudo nginx -t

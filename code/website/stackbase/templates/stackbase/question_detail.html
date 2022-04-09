@@ -118,7 +118,7 @@
                     <h2>Answers...</h2> <br><br><br>
 
                     {% if not question.comment.all %}
-                        <h3>No Answers yet... <a href="">Answer Question</a> </h3>
+                        <h3> </h3>
                     {% else %}
                         {% for comment in question.comment.all %}
                             <h3 style="font-weight: normal; font-size: 15px;">{{comment.content|safe}}</h3>

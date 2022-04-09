@@ -408,7 +408,11 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    environment_vars = ["NUMBER=${var.TEAMNUMBER}"]
+    environment_vars = ["NUMBER=${var.TEAMNUMBER}",
+                        "USERPASS=${var.non-root-user-for-database-password}",
+                        "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range}",
+                        "USERNAME=${var.non-root-user-for-database-username}",
+                        "DATABASE=${var.database-name}"]
     script          = "../scripts/core-focal/post_install_ubuntu_ws.sh"
     only            = ["virtualbox-iso.ws1","virtualbox-iso.ws2","virtualbox-iso.ws3"]
   }
@@ -447,7 +451,11 @@ build {
   
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    environment_vars = ["NUMBER=${var.TEAMNUMBER}"]
+    environment_vars = ["NUMBER=${var.TEAMNUMBER}",
+                        "USERPASS=${var.non-root-user-for-database-password}",
+                        "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range}",
+                        "USERNAME=${var.non-root-user-for-database-username}",
+                        "DATABASE=${var.database-name}"]
     script          = "../scripts/core-focal/post_install_ubuntu_ws.sh"
     only            = ["proxmox-iso.ws"]
   }

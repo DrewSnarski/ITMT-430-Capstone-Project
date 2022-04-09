@@ -1,14 +1,12 @@
-#!/bin/bash
+#!/bin/bash 
 set -e
 set -v
-export TEAMREPO=/home/vagrant/2022-team01m
 
-#################################################################################
-# Install additional packages and dependencies here
-# Make sure to leave the -y flag on the apt-get to auto accept the install
-# Firewalld is required
-#################################################################################
-sudo apt-get install -y firewalld
+##################################################
+# Add User customizations below here
+##################################################
+
+sudo apt-get install -y nginx firewalld
 
 #################################################################################
 # Use an IF statement to determine if we are building for Proxmox Cloud server
@@ -65,7 +63,7 @@ python3 -m pip install django-ckeditor --upgrade
 #################################################################################
 # Change the value of XX to be your team GitHub Repo
 # Otherwise your clone operation will fail
-# The command: su - vagrant -c switches from root to the user vagrant to execute
+# The command: su - vagrant -c switches from root to the user vagrant to execute 
 # the git clone command
 ##################################################################################
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"

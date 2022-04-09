@@ -1,6 +1,6 @@
 -- MySQL dump 10.19  Distrib 10.3.34-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: team01m
+-- Host: localhost    Database: $DATABASE
 -- ------------------------------------------------------
 -- Server version	10.3.34-MariaDB-0ubuntu0.20.04.1
 
@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$150000$RayXTNr0MUPb$OkIOOCG+6jd0U20oC2cwL2EABon2ymhG+njCG2KuhR0=','2022-04-02 07:17:16.435402',1,'vagrant','','','vagrant@iit.edu',1,1,'2022-03-06 07:54:39.617517'),(2,'pbkdf2_sha256$150000$k4iGivxSNKz4$WbRFdCfuVkKBhRx53Xc2z+xTdKDI7AABb8HiDSeMHKc=','2022-04-02 07:16:09.754580',0,'bsmith','','','',0,1,'2022-04-01 18:34:03.000000'),(3,'pbkdf2_sha256$150000$35mcYWVbzsQp$mDEt3tUFmxHYTk4yw7u8A230xGLmoouLP1hs9mf8YWQ=','2022-04-02 07:15:57.590966',0,'cmiller','','','',0,1,'2022-04-01 19:28:13.112812'),(4,'pbkdf2_sha256$150000$yOKVfAj7kjka$ZyWQPMZAUgUC6xpG84WqL/fdUOyJrFEVl+XDIJIxE7I=','2022-04-02 05:57:32.115006',0,'djohnson','','','',0,1,'2022-04-01 19:29:23.051711'),(5,'pbkdf2_sha256$150000$SohDLM7WvKIq$CK9DPlYtAXTqIdcVIZjk6687T9txfDYt7mYxzmMSWuM=','2022-04-02 07:14:16.292872',0,'vanderson','','','',0,1,'2022-04-01 19:30:24.984564'),(6,'pbkdf2_sha256$150000$kRc0NNT3WzQ6$Zm99JwCFRqAEJKrw2QNb6UH1hdHbddB5h3iQ+boQ71w=','2022-04-02 06:03:24.069609',0,'fbruce','','','',0,1,'2022-04-01 19:32:12.488895');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$150000$RayXTNr0MUPb$OkIOOCG+6jd0U20oC2cwL2EABon2ymhG+njCG2KuhR0=','2022-03-06 07:55:14.159318',1,'vagrant','','','vagrant@iit.edu',1,1,'2022-03-06 07:54:39.617517');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +206,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,6 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2022-04-01 18:34:03.702804','2','Bsmith',1,'[{\"added\": {}}]',4,1),(2,'2022-04-01 19:28:13.201590','3','cmiller',1,'[{\"added\": {}}]',4,1),(3,'2022-04-01 19:29:23.142631','4','djohnson',1,'[{\"added\": {}}]',4,1),(4,'2022-04-01 19:29:35.812549','2','bsmith',2,'[{\"changed\": {\"fields\": [\"username\"]}}]',4,1),(5,'2022-04-01 19:30:25.075268','5','vanderson',1,'[{\"added\": {}}]',4,1),(6,'2022-04-01 19:32:12.578219','6','fbruce',1,'[{\"added\": {}}]',4,1),(7,'2022-04-01 20:04:55.450417','1','bsmith - Question',1,'[{\"added\": {}}]',7,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +292,6 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('m8w8t2hxd63ek1kfa2eq0uu09n33rz3o','MTc2MWNjMzZjMzk1MjU4MGZhNTVjNjdkNmYzYmYxNDY5NjRjZDc3Mzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1MTZjYzA0MGEwZTJlMjU2YzdjNDc2NDM5NDRiMGUzZmY5Y2RiMzU1In0=','2022-04-16 07:17:16.440016');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +311,7 @@ CREATE TABLE `stackbase_comment` (
   PRIMARY KEY (`id`),
   KEY `stackbase_comment_question_id_7e187e91_fk_stackbase_question_id` (`question_id`),
   CONSTRAINT `stackbase_comment_question_id_7e187e91_fk_stackbase_question_id` FOREIGN KEY (`question_id`) REFERENCES `stackbase_question` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,7 +320,6 @@ CREATE TABLE `stackbase_comment` (
 
 LOCK TABLES `stackbase_comment` WRITE;
 /*!40000 ALTER TABLE `stackbase_comment` DISABLE KEYS */;
-INSERT INTO `stackbase_comment` VALUES (1,'cmiller','<p>I personally love pasta the best!</p>','2022-04-02 05:56:39.731746',1),(2,'djohnson','<p>I personally love to cook burgers and grilled cheese.&nbsp;</p>','2022-04-02 06:01:45.660265',5),(3,'fbruce','<p>I go out to eat pretty often at least 3 times a week. I do need to cut down on doing that though.</p>','2022-04-02 06:57:17.739954',7),(4,'vanderson','<p>I definitely do! Fruit is great, especially grapes.</p>','2022-04-02 07:15:35.252752',8),(5,'bsmith','<p>I love desserts everyday! I personally like to eat pudding and ice cream.</p>','2022-04-02 07:16:59.842834',11);
 /*!40000 ALTER TABLE `stackbase_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +339,7 @@ CREATE TABLE `stackbase_question` (
   PRIMARY KEY (`id`),
   KEY `stackbase_question_user_id_6bdf1467_fk_auth_user_id` (`user_id`),
   CONSTRAINT `stackbase_question_user_id_6bdf1467_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -351,7 +348,6 @@ CREATE TABLE `stackbase_question` (
 
 LOCK TABLES `stackbase_question` WRITE;
 /*!40000 ALTER TABLE `stackbase_question` DISABLE KEYS */;
-INSERT INTO `stackbase_question` VALUES (1,'What is your favorite food?','I just wanted to ask what others favorite food is. :))','2022-04-01 20:04:00.000000',2),(3,'Does anyone else like steak?','I love steak! Does anyone agree?','2022-04-02 05:52:55.458137',2),(4,'What unhealthy food do you love?','I love junk food. What kind of junk food do you guys love?','2022-04-02 05:55:04.154929',3),(5,'What kinds of food do you like to cook?','I love to cook, so I wanted to ask, what do you guys like to cook?','2022-04-02 05:56:09.888613',3),(6,'Does anyone know any tasty healthy foods to eat?','I wanted to ask whether anyone had any recs on healthy foods since I want to start eating healthier.','2022-04-02 05:59:13.946141',4),(7,'How often do you go out to eat?','How often do you go out to eat?','2022-04-02 06:00:11.034366',4),(8,'Do you like to eat fruit everyday?','I love fruit, so I was curious :)','2022-04-02 06:55:04.256719',6),(9,'Do you like to try new food often?','I personally do!','2022-04-02 06:56:36.184353',6),(11,'Do you like to eat some desserts after dinner?','I love desserts!','2022-04-02 07:14:30.584749',5),(12,'Do you read the nutritional information on the foods you buy?','I personally do to keep up on my nutrition.','2022-04-02 07:14:57.504878',5);
 /*!40000 ALTER TABLE `stackbase_question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +367,7 @@ CREATE TABLE `stackbase_question_likes` (
   KEY `stackbase_question_likes_user_id_c87b7812_fk_auth_user_id` (`user_id`),
   CONSTRAINT `stackbase_question_l_question_id_3e2a497e_fk_stackbase` FOREIGN KEY (`question_id`) REFERENCES `stackbase_question` (`id`),
   CONSTRAINT `stackbase_question_likes_user_id_c87b7812_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,4 +416,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-03 23:19:41
+-- Dump completed on 2022-03-06  7:57:20

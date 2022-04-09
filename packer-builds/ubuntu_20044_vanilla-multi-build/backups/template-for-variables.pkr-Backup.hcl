@@ -1,6 +1,6 @@
 variable "headless_build" {
   type =  bool
-  default = true
+  default = false
   # If using the IIT Build Server - change this value to true
 }
 
@@ -12,7 +12,7 @@ variable "memory_amount" {
 variable "SSHPW" {
   sensitive = true
   type = string
-  default = "vagrant"
+  default = ""
 }
 
 variable "build_artifact_location" {
@@ -22,37 +22,37 @@ variable "build_artifact_location" {
   # If you are building on the ITM Build Server (192.168.172.44) then 
   # uncomment the value below and comment out the initial default value
   # The teamXX can be replaced by your team number
-  default = "/datadisk2/boxes/team01-"
+  default = "/datadisk2/boxes/teamXX-"
 }
 
 variable "non-root-user-for-database-password" {
   type = string
   sensitive = true
-  default = "2022-team01m"
+  default = ""
 }
 
 variable "non-root-user-for-database-username" {
   type = string
   sensitive = true
-  default = "vagrant"
+  default = ""
 }
 
 variable "restrict-firewall-access-to-this-ip-range-virtualbox" {
   type = string
   sensitive = true
-  default = "192.168.56.%"
+  default = ""
 }
 
 variable "restrict-firewall-access-to-this-ip-range-proxmox" {
   type = string
   sensitive = true
-  default = "192.168.172.%"
+  default = ""
 }
 
 variable "database-name" {
   type = string
   sensitive = true
-  default = "team01m"
+  default = ""
 }
 
 //  variables for PROXMOX Cloud Instances
@@ -65,7 +65,7 @@ variable "database-name" {
 ############################################################################################
 variable "NODENAME" {
   type    = string
-  default = "proxmonster3"
+  default = ""
 }
 
 variable "USERNAME" {
@@ -83,7 +83,7 @@ variable "PROXMOX_TOKEN" {
 variable "URL" {
   type = string
   # https://x.x.x.x:8006/api2/json
-  default = "https://192.168.172.41:8006/api2/json"
+  default = ""
 }
 ############################################################################################
 # MEMORY, DISKSIZE, STORAGEPOOL, NUMBEROFCORES can all be left at default setting. These could
@@ -123,7 +123,7 @@ variable "LBNAME" {
   # Use this standard and replace the XX with your team number
   # teamXX-lb-template
   type    = string
-  default = "team01-lb-template"
+  default = ""
 }
 
 # This is the name of the Virtual Machine Template you want to create
@@ -131,7 +131,7 @@ variable "WSNAME" {
   # Use this standard and replace the XX with your team number
   # teamXX-ws-template
   type    = string
-  default = "team01-ws-template"
+  default = ""
 }
 
 # This is the name of the Virtual Machine Template you want to create
@@ -139,11 +139,11 @@ variable "DBNAME" {
   # Use this standard and replace the XX with your team number
   # teamXX-db-template
   type    = string
-  default = "team01-db-template"
+  default = ""
 }
 
 # Team Number with leading Zero
 variable "TEAMNUMBER" {
   type    = string
-  default = "01"
+  default = ""
 }

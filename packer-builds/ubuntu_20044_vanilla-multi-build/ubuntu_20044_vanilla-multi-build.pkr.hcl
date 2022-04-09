@@ -410,7 +410,7 @@ build {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     environment_vars = ["NUMBER=${var.TEAMNUMBER}",
                         "USERPASS=${var.non-root-user-for-database-password}",
-                        "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range}",
+                        "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range-virtualbox}",
                         "USERNAME=${var.non-root-user-for-database-username}",
                         "DATABASE=${var.database-name}"]
     script          = "../scripts/core-focal/post_install_ubuntu_ws.sh"
@@ -453,7 +453,7 @@ build {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     environment_vars = ["NUMBER=${var.TEAMNUMBER}",
                         "USERPASS=${var.non-root-user-for-database-password}",
-                        "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range}",
+                        "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range-proxmox}",
                         "USERNAME=${var.non-root-user-for-database-username}",
                         "DATABASE=${var.database-name}"]
     script          = "../scripts/core-focal/post_install_ubuntu_ws.sh"

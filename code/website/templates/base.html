@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>We &#60;3 Food!</title>
+    <title>Stack Overflow - Where Developers Learn, Share, &amp; Build Careers</title>
     <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196">
     <link rel="apple-touch-icon" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
     <link rel="image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
@@ -35,21 +35,13 @@
                 </div>
                 <div class="nav-dropdown-menu">
                     <a href="/" class="current-link">Home</a>
-		    <ul class="nav-ul">
-                        <li class="nav-item">
-		            <a href="/questions/" class="nav-link">Questions</a>
-		            <a href="/profile/" class="btn nav-link">Profile</a>
-			</li>
-		   </ul>
-		   <ul class="nav-ul">
-                       <li class="nav-item">
+		    <a href="/questions/" class="current-link">Questions</a>
+		    <a href="/profile/" class="current-link">Profile</a>
                 {% if user.is_authenticated %}
-			    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+			    <a href="{% url 'logout' %}" class="current-link">Logout</a>
                 {% else %}
-                <a href="{% url 'login' %}" class="btn btn-login">Log In</a>
+                <a href="{% url 'login' %}" class="current-link">Log In</a>
                 {% endif %}
-		      </li>
-		  </ul>
                 </div>
             </div>
 
@@ -145,7 +137,6 @@
         </div>
             <div class="copyright">
                 <p>site design / logo © 2020 Stack Exchange Inc; user contributions licensed under <a href="https://stackoverflow.com/help/licensing">cc by-sa</a>. rev 2020.10.2.37725</p>
-                <p>Created by Team 01 of Illinois Institute of Technology - ITMT-430 </p>
             </div>
         </div>
     </div>

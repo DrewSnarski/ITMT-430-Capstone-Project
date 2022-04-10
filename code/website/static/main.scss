@@ -332,7 +332,10 @@
   .current-link{
   background-color: var(--black-050);
     color: var(--black-900);
-    font-weight: bold;
+  }
+  .current-link:hover {
+    background-color: #555;
+    color: white;
   }
   .nav-ul {
     i{

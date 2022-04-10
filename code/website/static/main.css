@@ -364,7 +364,10 @@
   .current-link {
     background-color: var(--black-050);
     color: var(--black-900);
-    font-weight: bold;
+  }
+  .current-link:hover {
+    background-color: #555;
+    color: white;
   }
   
   .nav-ul i {
@@ -1235,9 +1238,7 @@
     color: var(--black-500);
     padding-top: 4rem;
     padding-bottom: 4rem;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    position: relative;
   }
   
   .footer-content {

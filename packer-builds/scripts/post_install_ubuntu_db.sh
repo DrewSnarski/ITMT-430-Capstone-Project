@@ -73,5 +73,6 @@ sudo mysql $DATABASE < $TEAMREPO/database.sql
 sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
 # Open firewall port to allow only connections from 192.168.56.0/24
 sudo firewall-cmd --zone=public --add-source=192.168.56.0/24 --permanent
+sudo firewall-cmd --zone=public --add-source=192.168.172.0/24 --permanent
 # Reload changes to firewall
 sudo firewall-cmd --reload

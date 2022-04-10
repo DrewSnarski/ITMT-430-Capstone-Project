@@ -83,7 +83,7 @@ cp -r /home/vagrant/2022-team01m/code/website /home/vagrant/
 #Setup for DB connection
 echo "[mysqld]" > /home/vagrant/.my.cnf
 echo "[client]" >> /home/vagrant/.my.cnf
-echo "host = 192.168.56.105" >> /home/vagrant/.my.cnf
+echo "host = team-$NUMBER-db-vm0.service.consul" >> /home/vagrant/.my.cnf
 echo "user = $USERNAME" >> /home/vagrant/.my.cnf
 echo "password = $USERPASS" >> /home/vagrant/.my.cnf
 echo "database = $DATABASE" >> /home/vagrant/.my.cnf

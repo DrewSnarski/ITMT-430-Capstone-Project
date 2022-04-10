@@ -146,12 +146,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALLOWED_HOSTS = [
-    '192.168.56.101',
-    '192.168.56.102',
-    '192.168.56.103',
-    '192.168.56.104',
     '10.0.2.15',
-    'stackprj.com',
+    '192.168.56.*',
+    '192.168.172.*',
+    '.service.consul',
+    'team-01*',
+    '.stackprj.com',
 ]
 
 # Google oauth

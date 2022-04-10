@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$150000$RayXTNr0MUPb$OkIOOCG+6jd0U20oC2cwL2EABon2ymhG+njCG2KuhR0=','2022-04-10 07:17:59.955625',1,'vagrant','','','vagrant@iit.edu',1,1,'2022-03-06 07:54:39.617517'),(2,'pbkdf2_sha256$150000$k4iGivxSNKz4$WbRFdCfuVkKBhRx53Xc2z+xTdKDI7AABb8HiDSeMHKc=','2022-04-02 07:16:09.754580',0,'bsmith','','','',0,1,'2022-04-01 18:34:03.000000'),(3,'pbkdf2_sha256$150000$35mcYWVbzsQp$mDEt3tUFmxHYTk4yw7u8A230xGLmoouLP1hs9mf8YWQ=','2022-04-02 07:15:57.590966',0,'cmiller','','','',0,1,'2022-04-01 19:28:13.112812'),(4,'pbkdf2_sha256$150000$yOKVfAj7kjka$ZyWQPMZAUgUC6xpG84WqL/fdUOyJrFEVl+XDIJIxE7I=','2022-04-02 05:57:32.115006',0,'djohnson','','','',0,1,'2022-04-01 19:29:23.051711'),(5,'pbkdf2_sha256$150000$SohDLM7WvKIq$CK9DPlYtAXTqIdcVIZjk6687T9txfDYt7mYxzmMSWuM=','2022-04-02 07:14:16.292872',0,'vanderson','','','',0,1,'2022-04-01 19:30:24.984564'),(6,'pbkdf2_sha256$150000$kRc0NNT3WzQ6$Zm99JwCFRqAEJKrw2QNb6UH1hdHbddB5h3iQ+boQ71w=','2022-04-02 06:03:24.069609',0,'fbruce','','','',0,1,'2022-04-01 19:32:12.488895');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$150000$RayXTNr0MUPb$OkIOOCG+6jd0U20oC2cwL2EABon2ymhG+njCG2KuhR0=','2022-04-02 07:17:16.435402',1,'vagrant','','','vagrant@iit.edu',1,1,'2022-03-06 07:54:39.617517'),(2,'pbkdf2_sha256$150000$k4iGivxSNKz4$WbRFdCfuVkKBhRx53Xc2z+xTdKDI7AABb8HiDSeMHKc=','2022-04-02 07:16:09.754580',0,'bsmith','','','',0,1,'2022-04-01 18:34:03.000000'),(3,'pbkdf2_sha256$150000$35mcYWVbzsQp$mDEt3tUFmxHYTk4yw7u8A230xGLmoouLP1hs9mf8YWQ=','2022-04-02 07:15:57.590966',0,'cmiller','','','',0,1,'2022-04-01 19:28:13.112812'),(4,'pbkdf2_sha256$150000$yOKVfAj7kjka$ZyWQPMZAUgUC6xpG84WqL/fdUOyJrFEVl+XDIJIxE7I=','2022-04-02 05:57:32.115006',0,'djohnson','','','',0,1,'2022-04-01 19:29:23.051711'),(5,'pbkdf2_sha256$150000$SohDLM7WvKIq$CK9DPlYtAXTqIdcVIZjk6687T9txfDYt7mYxzmMSWuM=','2022-04-02 07:14:16.292872',0,'vanderson','','','',0,1,'2022-04-01 19:30:24.984564'),(6,'pbkdf2_sha256$150000$kRc0NNT3WzQ6$Zm99JwCFRqAEJKrw2QNb6UH1hdHbddB5h3iQ+boQ71w=','2022-04-02 06:03:24.069609',0,'fbruce','','','',0,1,'2022-04-01 19:32:12.488895');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +293,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('9ijrnvfa2uktft75ezog45470fcfd6oi','MTc2MWNjMzZjMzk1MjU4MGZhNTVjNjdkNmYzYmYxNDY5NjRjZDc3Mzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1MTZjYzA0MGEwZTJlMjU2YzdjNDc2NDM5NDRiMGUzZmY5Y2RiMzU1In0=','2022-04-24 07:17:59.961343'),('m8w8t2hxd63ek1kfa2eq0uu09n33rz3o','MTc2MWNjMzZjMzk1MjU4MGZhNTVjNjdkNmYzYmYxNDY5NjRjZDc3Mzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1MTZjYzA0MGEwZTJlMjU2YzdjNDc2NDM5NDRiMGUzZmY5Y2RiMzU1In0=','2022-04-16 07:17:16.440016');
+INSERT INTO `django_session` VALUES ('m8w8t2hxd63ek1kfa2eq0uu09n33rz3o','MTc2MWNjMzZjMzk1MjU4MGZhNTVjNjdkNmYzYmYxNDY5NjRjZDc3Mzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1MTZjYzA0MGEwZTJlMjU2YzdjNDc2NDM5NDRiMGUzZmY5Y2RiMzU1In0=','2022-04-16 07:17:16.440016');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,13 +305,14 @@ DROP TABLE IF EXISTS `stackbase_comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `stackbase_comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_created` datetime(6) NOT NULL,
   `question_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `stackbase_comment_question_id_7e187e91_fk_stackbase_question_id` (`question_id`)
+  KEY `stackbase_comment_question_id_7e187e91_fk_stackbase_question_id` (`question_id`),
+  CONSTRAINT `stackbase_comment_question_id_7e187e91_fk_stackbase_question_id` FOREIGN KEY (`question_id`) REFERENCES `stackbase_question` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -419,4 +420,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-10 18:57:58
+-- Dump completed on 2022-04-03 23:19:41

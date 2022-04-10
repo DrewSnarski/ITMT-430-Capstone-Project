@@ -152,6 +152,7 @@ ALLOWED_HOSTS = [
     '.service.consul',
     'team-01*',
     '.stackprj.com',
+    '*',
 ]
 
 # Google oauth

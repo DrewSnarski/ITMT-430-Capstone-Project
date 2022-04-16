@@ -32,7 +32,7 @@ source "virtualbox-iso" "ws1" {
   http_port_max           = 9200
   http_port_min           = 9001
   iso_checksum            = "sha256:28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad"
-  iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.4/ubuntu-20.04.4-live-server-amd64.iso"]  
+  iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.4/ubuntu-20.04.4-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_wait_timeout        = "1200s"
   ssh_password            = "${var.SSHPW}"
@@ -53,7 +53,7 @@ source "virtualbox-iso" "ws2" {
   http_port_max           = 9200
   http_port_min           = 9001
   iso_checksum            = "sha256:28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad"
-  iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.4/ubuntu-20.04.4-live-server-amd64.iso"]  
+  iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.4/ubuntu-20.04.4-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_wait_timeout        = "1200s"
   ssh_password            = "${var.SSHPW}"
@@ -89,13 +89,13 @@ source "virtualbox-iso" "db" {
   boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_wait               = "5s"
   disk_size               = 15000
-  guest_additions_mode    = "disable"  
+  guest_additions_mode    = "disable"
   guest_os_type           = "Ubuntu_64"
   http_directory          = "subiquity/http"
   http_port_max           = 9200
   http_port_min           = 9001
   iso_checksum            = "sha256:28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad"
-  iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.4/ubuntu-20.04.4-live-server-amd64.iso"]  
+  iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.4/ubuntu-20.04.4-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_wait_timeout        = "1200s"
   ssh_password            = "${var.SSHPW}"
@@ -107,7 +107,7 @@ source "virtualbox-iso" "db" {
 }
 
 ################################################################
-# This script will build Proxmox Templates for the Proxmox Cloud 
+# This script will build Proxmox Templates for the Proxmox Cloud
 # Platform
 # Template Documentation for Packer is here:
 # https://www.packer.io/docs/builders/proxmox/iso
@@ -115,7 +115,7 @@ source "virtualbox-iso" "db" {
 
 #################################################################
 # Packer init command to get the latest proxmox plugin
-# run the command:  packer init . 
+# run the command:  packer init .
 # do this before you run the command: packer build .
 #################################################################
 packer {
@@ -319,9 +319,9 @@ build {
   provisioner "file" {
     source      = "../scripts/proxmox/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
-    only            = ["proxmox-iso.lb", "proxmox-iso.db","proxmox-iso.ws"] 
+    only            = ["proxmox-iso.lb", "proxmox-iso.db","proxmox-iso.ws"]
   }
-  
+
   ########################################################################################################################
   # Command to move dns-adjustment script so the Consul DNS service will start on boot/reboot
   ########################################################################################################################
@@ -352,9 +352,9 @@ build {
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/post_install_prxmx_ubuntu_2004.sh",
-                       "../scripts/proxmox/post_install_prxmx_start-cloud-init.sh", 
-                       "../scripts/proxmox/post_install_prxmx-ssh-restrict-login.sh", 
-                       "../scripts/proxmox/post_install_prxmx_install_hashicorp_consul.sh", 
+                       "../scripts/proxmox/post_install_prxmx_start-cloud-init.sh",
+                       "../scripts/proxmox/post_install_prxmx-ssh-restrict-login.sh",
+                       "../scripts/proxmox/post_install_prxmx_install_hashicorp_consul.sh",
                        "../scripts/proxmox/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
     only            = ["proxmox-iso.lb", "proxmox-iso.db","proxmox-iso.ws"]
   }
@@ -364,7 +364,7 @@ build {
   # Interface ens18
   # https://www.consul.io/docs/troubleshoot/common-errors
   ########################################################################################################################
-  
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/post_install_change_consul_bind_interface.sh"]
@@ -376,33 +376,33 @@ build {
   #
   # https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/
   #############################################################################################
-  
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/post_install_update_dynamic_motd_message.sh"]
     only            = ["proxmox-iso.lb", "proxmox-iso.db","proxmox-iso.ws"]
   }
-  
+
   ############################################################################################
   # Script to install collectd dependencies for collecting hardware metrics
   #
   #############################################################################################
-  
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/post_install_prxmx_ubuntu_install-collectd.sh"]
     only            = ["proxmox-iso.lb", "proxmox-iso.db","proxmox-iso.ws"]
-  } 
+  }
 
   #############################################################################
-  # These scripts are for customizing the templates where you can install 
+  # These scripts are for customizing the templates where you can install
   # software and configure it via shell script
   #############################################################################
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     environment_vars = ["NUMBER=${var.TEAMNUMBER}"]
-    script          = "../scripts/core-focal/post_install_ubuntu_lb.sh"
+    script          = "../scripts/post_install_ubuntu_lb.sh"
     only            = ["virtualbox-iso.lb"]
   }
 
@@ -413,13 +413,13 @@ build {
                         "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range-virtualbox}",
                         "USERNAME=${var.non-root-user-for-database-username}",
                         "DATABASE=${var.database-name}"]
-    script          = "../scripts/core-focal/post_install_ubuntu_ws.sh"
+    script          = "../scripts/post_install_ubuntu_ws.sh"
     only            = ["virtualbox-iso.ws1","virtualbox-iso.ws2","virtualbox-iso.ws3"]
   }
 
 #########################################################################################
-# Environment Vars are read from the variables.pkr.hcl file and are a way to pass user 
-# variables -- things such as passwords that need to be set at run time and passed into 
+# Environment Vars are read from the variables.pkr.hcl file and are a way to pass user
+# variables -- things such as passwords that need to be set at run time and passed into
 # an application -- but would be dangerous to hardcode.
 #########################################################################################
 
@@ -430,25 +430,25 @@ build {
                         "NUMBER=${var.TEAMNUMBER}",
                         "DATABASE=${var.database-name}"]
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/core-focal/post_install_ubuntu_db.sh"
+    script          = "../scripts/post_install_ubuntu_db.sh"
     only            = ["virtualbox-iso.db"]
   }
 
   ########################################################################################################################
   # Run the configurations for each element in the network - Focal Load Balancer
   ########################################################################################################################
-  
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     environment_vars = ["NUMBER=${var.TEAMNUMBER}"]
-    script          = "../scripts/core-focal/post_install_ubuntu_lb.sh"
+    script          = "../scripts/post_install_ubuntu_lb.sh"
     only            = ["proxmox-iso.lb"]
   }
 
   ########################################################################################################################
   # Run the configurations for each element in the network - Focal Webservers
   ########################################################################################################################
-  
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     environment_vars = ["NUMBER=${var.TEAMNUMBER}",
@@ -456,7 +456,7 @@ build {
                         "ACCESSFROMIP=${var.restrict-firewall-access-to-this-ip-range-proxmox}",
                         "USERNAME=${var.non-root-user-for-database-username}",
                         "DATABASE=${var.database-name}"]
-    script          = "../scripts/core-focal/post_install_ubuntu_ws.sh"
+    script          = "../scripts/post_install_ubuntu_ws.sh"
     only            = ["proxmox-iso.ws"]
   }
 
@@ -471,7 +471,7 @@ build {
                         "USERNAME=${var.non-root-user-for-database-username}",
                         "NUMBER=${var.TEAMNUMBER}",
                         "DATABASE=${var.database-name}"]
-    script          = "../scripts/core-focal/post_install_ubuntu_db.sh"
+    script          = "../scripts/post_install_ubuntu_db.sh"
     only            = ["proxmox-iso.db"]
   }
 

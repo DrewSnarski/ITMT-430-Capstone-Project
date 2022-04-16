@@ -71,7 +71,7 @@ python3 -m pip install django-ckeditor --upgrade
 su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 
 # set the /etc/hosts file to match hostname
-echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
+#echo "10.0.2.15 stackprj stackprj.com" | sudo tee -a /etc/hosts
 # set django startup file host ip
 #sed -i "s/host/$IP/g" $TEAMREPO/code/website/*.json
 

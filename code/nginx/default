@@ -54,6 +54,9 @@ server {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
     #	try_files $uri $uri/ =404;
+
+		# Secure NGINX - GEURE
+		limit_except GET HEAD POST { deny all; }
 	}
 
 	# pass PHP scripts to FastCGI server
@@ -73,6 +76,13 @@ server {
 	#location ~ /\.ht {
 	#	deny all;
 	#}
+# Secure NGINX - GEure
+add_header X-Frame-Options "SAMEORIGIN";
+add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
+add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
+add_header X-XSS-Protection "1; mode=block";
+ssl_protocols TLSv1.2 TLSv1.3;
+ssl_prefer_server_ciphers on;
 }
 
 

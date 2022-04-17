@@ -16,7 +16,7 @@ sudo apt-get install -y mariadb-server firewalld
 #################################################################################
 IP=$(hostname -I | awk '{print $2}' | cut -d . -f3)
 
-if [ $IP != 172 ]
+if [ "$IP" = "172" ]
 then
   echo "Building for Proxmox Cloud Environment -- we have Dynamic DNS, no need for /etc/hosts files"
 else
@@ -45,7 +45,7 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 # https://en.wikipedia.org/wiki/Sed
 #################################################################################
 
-if [ $IP != 172 ]
+if [ "$IP" = "172" ]
 then
   # Detect if we are in the Vagrant environement (third IP octet will be 56) or Proxmox environment -- will be 172
   # If using mysql instead of MariaDB the path to the cnf file is /etc/mysql/mysql.conf.d/mysql.cnf
@@ -99,13 +99,13 @@ EOS
 #################################################################################
 # Open firewall port for port 3306/tcp
 sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
-if [ $IP != 172 ]
+if [ "$IP" = "172" ]
 then
-  # (Vagrant) Open firewall port to allow only connections from 192.168.56.0/24
-  sudo firewall-cmd --zone=public --add-source=192.168.56.0/24 --permanent
-else
   # (Proxmox) Open firewall port to allow only connections from 192.168.172.0/24
   sudo firewall-cmd --zone=public --add-source=192.168.172.0/24 --permanent
+else
+  # (Vagrant) Open firewall port to allow only connections from 192.168.56.0/24
+  sudo firewall-cmd --zone=public --add-source=192.168.56.0/24 --permanent
 fi
 # Reload changes to firewall
 sudo firewall-cmd --reload

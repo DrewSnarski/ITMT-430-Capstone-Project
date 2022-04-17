@@ -9,6 +9,13 @@ export TEAMREPO=/home/vagrant/2022-team01m
 # Firewalld is required
 #################################################################################
 sudo apt-get install -y firewalld
+##################################################################################
+# Installs fail2ban to prevent intrusions (Phallyn H)                          #
+##################################################################################
+sudo apt-get install -y fail2ban
+sudo sed -i "s/bantime = 600/bantime = -1/g" /etc/fail2ban/jail.conf
+sudo systemctl enable fail2ban
+sudo service fail2ban restart
 
 #################################################################################
 # Use an IF statement to determine if we are building for Proxmox Cloud server

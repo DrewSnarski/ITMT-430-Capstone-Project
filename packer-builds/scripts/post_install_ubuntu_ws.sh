@@ -16,7 +16,7 @@ sudo apt-get install -y firewalld
 #################################################################################
 IP=$(hostname -I | awk '{print $2}' | cut -d . -f3)
 
-if [ $IP != 172 ]
+if [ "$IP" = "172" ]
 then
   echo "Building for Proxmox Cloud Environment -- we have Dynamic DNS, no need for /etc/hosts files"
 else
@@ -132,11 +132,8 @@ rm -v /home/vagrant/website/pm2-django.sh
 # https://firewalld.org/
 # https://firewalld.org/documentation/
 #################################################################################
-if [ $IP != 172 ]
+if [ "$IP" = "172" ]
 then
-  # (Vagrant) Open firewall port to allow only connections from 192.168.56.0/24
-  sudo firewall-cmd --zone=public --add-source=192.168.56.101 --permanent
-else
   # (Proxmox) Open firewall port to allow only connections from 192.168.172.0/24
   sudo firewall-cmd --zone=public --add-source=192.168.172.0/24 --permanent
 fi

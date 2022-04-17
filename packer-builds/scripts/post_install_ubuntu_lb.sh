@@ -16,7 +16,7 @@ sudo apt-get install -y nginx firewalld
 #################################################################################
 IP=$(hostname -I | awk '{print $2}' | cut -d . -f3)
 
-if [ $IP != 172 ]
+if [ "$IP" = "172" ]
 then
   echo "Building for Proxmox Cloud Environment -- we have Dynamic DNS, no need for /etc/hosts files"
 else

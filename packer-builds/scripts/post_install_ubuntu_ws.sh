@@ -21,9 +21,9 @@ sudo service fail2ban restart
 # Use an IF statement to determine if we are building for Proxmox Cloud server
 # 192.168.172.x or for VirtualBox 192.168.56.x
 #################################################################################
-IP=$(hostname -I | awk '{print $2}' | cut -d . -f3)
+HOST=$(hostname | cut -d - -f4 | cut -c 1-2)
 
-if [ "$IP" = "172" ]
+if [ "$HOST" = "vm" ]
 then
   echo "Building for Proxmox Cloud Environment -- we have Dynamic DNS, no need for /etc/hosts files"
 else
@@ -139,7 +139,7 @@ rm -v /home/vagrant/website/pm2-django.sh
 # https://firewalld.org/
 # https://firewalld.org/documentation/
 #################################################################################
-if [ "$IP" = "172" ]
+if [ "$HOST" = "vm" ]
 then
   # (Proxmox) Open firewall port to allow only connections from 192.168.172.0/24
   sudo firewall-cmd --zone=public --add-source=192.168.172.0/24 --permanent

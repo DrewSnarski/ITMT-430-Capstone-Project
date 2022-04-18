@@ -21,9 +21,9 @@ sudo service fail2ban restart
 # Use an IF statement to determine if we are building for Proxmox Cloud server
 # 192.168.172.x or for VirtualBox 192.168.56.x
 #################################################################################
-IP=$(hostname -I | awk '{print $2}' | cut -d . -f3)
+HOST=$(hostname | cut -d - -f4 | cut -c 1-2)
 
-if [ "$IP" = "172" ]
+if [ "$HOST" = "vm" ]
 then
   echo "Building for Proxmox Cloud Environment -- we have Dynamic DNS, no need for /etc/hosts files"
 else
@@ -52,16 +52,16 @@ su - vagrant -c "git clone git@github.com:illinoistech-itm/2022-team01m.git"
 # https://en.wikipedia.org/wiki/Sed
 #################################################################################
 
-if [ "$IP" = "172" ]
+if [ "$HOST" = "vm" ]
 then
   # Detect if we are in the Vagrant environement (third IP octet will be 56) or Proxmox environment -- will be 172
   # If using mysql instead of MariaDB the path to the cnf file is /etc/mysql/mysql.conf.d/mysql.cnf
   # The command: $(cat /etc/hosts | grep db | awk '{ print $1 }') will retrieve the IP address of the db from the /etc/hosts file, a bit of a hack...
   # sudo sed -i "s/.*bind-address.*/#bind-address = $(cat /etc/hosts | grep team-$NUMBER-db-vm0 | awk '{ print $1 }')/" /etc/mysql/mysql.conf.d/mysql.cnf
-  sudo sed -i "s/.*bind-address.*/bind-address = $(cat /etc/hosts | grep team-$NUMBER-db-vm0 | awk '{ print $1 }')/" /etc/mysql/mariadb.conf.d/50-server.cnf
-else
   # Kind of a hack....
   sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
+else
+  sudo sed -i "s/.*bind-address.*/bind-address = $(cat /etc/hosts | grep team-$NUMBER-db-vm0 | awk '{ print $1 }')/" /etc/mysql/mariadb.conf.d/50-server.cnf
 fi
 
 #################################################################################
@@ -106,7 +106,7 @@ EOS
 #################################################################################
 # Open firewall port for port 3306/tcp
 sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
-if [ "$IP" = "172" ]
+if [ "$HOST" = "vm" ]
 then
   # (Proxmox) Open firewall port to allow only connections from 192.168.172.0/24
   sudo firewall-cmd --zone=public --add-source=192.168.172.0/24 --permanent

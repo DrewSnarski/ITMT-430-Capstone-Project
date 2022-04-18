@@ -21,9 +21,9 @@ sudo service fail2ban restart
 # Use an IF statement to determine if we are building for Proxmox Cloud server
 # 192.168.172.x or for VirtualBox 192.168.56.x
 #################################################################################
-HOST=$(hostname | cut -d - -f4 | cut -c 1-2)
+IP=$(hostname -I | awk '{print $2}' | cut -d . -f3)
 
-if [ "$HOST" = "vm" ]
+if [ $IP = 172 ]
 then
   echo "Building for Proxmox Cloud Environment -- we have Dynamic DNS, no need for /etc/hosts files"
 else

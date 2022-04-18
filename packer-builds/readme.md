@@ -2,6 +2,7 @@
 1. rename and edit variables.pkr.hcl:
 	* `ssh -i ~/.ssh/id_ed25519_username_key username@192.168.172.44`
 	* `cd ~/2022-team01m/packer-builds/ubuntu_20044_vanilla-multi-build`
+	* `git pull`
 	* `mv template-for-variables.pkr.hcl variables.pkr.hcl`
 	* `vi variables.pkr.hcl`
 	* edit lines 74, 80 with credentials from Prof. Hajek

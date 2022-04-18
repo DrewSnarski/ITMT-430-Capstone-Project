@@ -59,10 +59,10 @@ sudo cp -v $TEAMREPO/code/nginx/default /etc/nginx/sites-enabled
 sudo cp -v $TEAMREPO/code/nginx/nginx.conf /etc/nginx/
 
 # Restart the Nginx service so it actualizes the updates just made
-sudo nginx -t
-sudo systemctl daemon-reload
-sudo systemctl reload nginx
-sudo systemctl restart nginx
+#udo nginx -t
+#sudo systemctl daemon-reload
+#sudo systemctl reload nginx
+#sudo systemctl restart nginx
 
 #################################################################################
 # Enable http in the firewall

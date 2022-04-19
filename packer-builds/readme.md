@@ -1,3 +1,5 @@
+# Please note this document assumes you have already successfully implemented Drew's server build document located at https://github.com/illinoistech-itm/2022-team01m/tree/main/build#readme.
+
 # Server build configuration (one-time only)
 1. rename and edit variables.pkr.hcl:
 	* `ssh -i ~/.ssh/id_ed25519_username_key username@192.168.172.44`

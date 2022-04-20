@@ -3,88 +3,75 @@
 Vagrant WS:
 
 ![Text Description automatically
-generated](media/image1.png){width="6.5in"
-height="1.3430555555555554in"}
+generated](media/image1.png)
 
 Vagrant DB:
 
 ![Text Description automatically
-generated](media/image2.png){width="6.5in"
-height="1.4569444444444444in"}
+generated](media/image2.png)
 
 Proxmox WS:
 
 ![Text Description automatically
-generated](media/image3.png){width="6.5in"
-height="1.6833333333333333in"}
+generated](media/image3.png)
 
 Proxmox DB:
 
 ![Text Description automatically
-generated](media/image4.png){width="6.5in"
-height="1.4826388888888888in"}
+generated](media/image4.png)
 
 Variables.pkr.hcl:
 
 ![Text Description automatically
-generated](media/image5.png){width="6.5in" height="4.520833333333333in"}
+generated](media/image5.png)
 
 WS Database secrets:
 
 ![Text Description automatically
-generated](media/image6.png){width="6.5in"
-height="1.1430555555555555in"}
+generated](media/image6.png)
 
 DB Database secrets:
 
 ![Text Description automatically
-generated](media/image7.png){width="6.5in"
-height="1.1416666666666666in"}
+generated](media/image7.png)
 
 **Firewall**
 
 WS Firewall:
 
 ![Text Description automatically
-generated](media/image8.png){width="6.5in"
-height="1.4520833333333334in"}
+generated](media/image8.png)
 
 LB Firewall:
 
 ![Text Description automatically
-generated](media/image9.png){width="6.5in"
-height="1.4979166666666666in"}
+generated](media/image9.png)
 
 DB Firewall:
 
 ![Text Description automatically
-generated](media/image10.png){width="6.5in"
-height="2.1666666666666665in"}
+generated](media/image10.png)
 
 **Database Security**
 
 MariaDB Security:
 
 ![Graphical user interface, text, chat or text message Description
-automatically generated](media/image11.png){width="6.5in"
-height="2.1708333333333334in"}
+automatically generated](media/image11.png)
 
 **Fail2Ban**
 
 WS Fail2Ban:
 
 ![Text Description automatically
-generated](media/image12.png){width="6.5in"
-height="0.9597222222222223in"}
+generated](media/image12.png)
 
 DB Fail2Ban
 
 ![Graphical user interface Description automatically generated with
-medium confidence](media/image13.png){width="6.5in"
-height="0.9305555555555556in"}
+medium confidence](media/image13.png)
 
 LB Fail2Ban:
 
 ![Text Description automatically generated with medium
-confidence](media/image14.png){width="6.5in"
-height="1.0215277777777778in"}
+confidence](media/image14.png)

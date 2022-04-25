@@ -72,8 +72,22 @@ Default.conf:
 
 <img src="media/image16.png" style="width:6.5in;height:1.26736in" alt="Graphical user interface, text Description automatically generated" />
 
+**NGINX HTTPS**
+
+Nginx.conf:
+
+<img src="media/image17.png" style="width:6.5in;height:1.04653in" alt="Text Description automatically generated" />
+
+Default.conf:
+
+<img src="media/image18.png" style="width:6.5in;height:1.25903in" alt="Text Description automatically generated" />
+
+Firewall (allowing HTTPS):
+
+<img src="media/image19.png" style="width:6.5in;height:0.86111in" alt="Graphical user interface, text Description automatically generated" />
+
 **Django Security**
 
 Settings.py:
 
-<img src="media/image17.png" style="width:6.5in;height:2.46181in" alt="Graphical user interface, table Description automatically generated" />
+<img src="media/image20.png" style="width:6.5in;height:2.46181in" alt="Graphical user interface, table Description automatically generated" />

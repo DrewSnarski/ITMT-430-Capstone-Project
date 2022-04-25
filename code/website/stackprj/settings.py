@@ -179,6 +179,23 @@ ALLOWED_HOSTS = [
 #LOGIN_REDIRECT_URL = '/login'
 #LOGOUT_REDIRECT_URL = '/'
 
+# Tenzin's code
+# Cross site request forgery (CSRF) protection
+# CSRF_COOKIE_SECURE = True #to avoid transmitting the CSRF cookie over HTTP accidentally.
+# SESSION_COOKIE_SECURE = True #to avoid transmitting the session cookie over HTTP accidentally.
+# Cross-site Scripting (XSS)
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SSL Redirect
+# SECURE_SSL_REDIRECT = True #to force Django redirect all non-HTTPS requests to HTTPS
+
+# Content Security Policy (CSP) if installed
+# CSP_DEFAULT_SRC = ("'NONE'", )
+# CSP_STYLE_SRC = ("'self'", )
+# CSP_SCRIPT_SRC = ("'self'", )
+# CSP_IMG_SRC = ("'self'", )
+# CSP_FONT_SRC = ("'self'", )
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'stackbase:home'

@@ -57,15 +57,15 @@ export TEAMREPO=/home/vagrant/2022-team01m
 ###########################################
 sudo cp -v $TEAMREPO/code/nginx/default /etc/nginx/sites-enabled
 sudo cp -v $TEAMREPO/code/nginx/nginx.conf /etc/nginx/
-#sudo mkdir -p /etc/nginx/ssl
-#cd /etc/nginx/ssl
-#sudo openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -in server.csr -out nginx-certificate.crt -keyout nginx.key -subj "/C=US/ST=Illinois/L=Chicago/O=IIT/OU=ITMT 430 Team 01/CN=192.168.56.*"
+sudo mkdir -p /etc/nginx/ssl
+cd /etc/nginx/ssl
+sudo openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -in server.csr -out nginx-certificate.crt -keyout nginx.key -subj "/C=US/ST=Illinois/L=Chicago/O=IIT/OU=ITMT 430 Team 01/CN=192.168.56.*"
 
 # Restart the Nginx service so it actualizes the updates just made
-#sudo nginx -t
-#sudo systemctl daemon-reload
-#sudo systemctl reload nginx
-#sudo systemctl restart nginx
+sudo nginx -t
+sudo systemctl daemon-reload
+sudo systemctl reload nginx
+sudo systemctl restart nginx
 
 #################################################################################
 # Enable http in the firewall

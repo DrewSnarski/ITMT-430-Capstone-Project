@@ -2,111 +2,78 @@
 
 Vagrant WS:
 
-![Text Description automatically
-generated](media/image1.png){width="6.5in"
-height="1.3430555555555554in"}
+<img src="media/image1.png" style="width:6.5in;height:1.34306in" alt="Text Description automatically generated" />
 
 Vagrant DB:
 
-![Text Description automatically
-generated](media/image2.png){width="6.5in"
-height="1.4569444444444444in"}
+<img src="media/image2.png" style="width:6.5in;height:1.45694in" alt="Text Description automatically generated" />
 
 Proxmox WS:
 
-![Text Description automatically
-generated](media/image3.png){width="6.5in"
-height="1.6833333333333333in"}
+<img src="media/image3.png" style="width:6.5in;height:1.68333in" alt="Text Description automatically generated" />
 
 Proxmox DB:
 
-![Text Description automatically
-generated](media/image4.png){width="6.5in"
-height="1.4826388888888888in"}
+<img src="media/image4.png" style="width:6.5in;height:1.48264in" alt="Text Description automatically generated" />
 
 Variables.pkr.hcl:
 
-![Text Description automatically
-generated](media/image5.png){width="6.5in" height="4.520833333333333in"}
+<img src="media/image5.png" style="width:6.5in;height:4.52083in" alt="Text Description automatically generated" />
 
 WS Database secrets:
 
-![Text Description automatically
-generated](media/image6.png){width="6.5in"
-height="1.1430555555555555in"}
+<img src="media/image6.png" style="width:6.5in;height:1.14306in" alt="Text Description automatically generated" />
 
 DB Database secrets:
 
-![Text Description automatically
-generated](media/image7.png){width="6.5in"
-height="1.1416666666666666in"}
+<img src="media/image7.png" style="width:6.5in;height:1.14167in" alt="Text Description automatically generated" />
 
 **Firewall**
 
 WS Firewall:
 
-![Text Description automatically
-generated](media/image8.png){width="6.5in"
-height="1.4520833333333334in"}
+<img src="media/image8.png" style="width:6.5in;height:1.45208in" alt="Text Description automatically generated" />
 
 LB Firewall:
 
-![Text Description automatically
-generated](media/image9.png){width="6.5in"
-height="1.4979166666666666in"}
+<img src="media/image9.png" style="width:6.5in;height:1.49792in" alt="Text Description automatically generated" />
 
 DB Firewall:
 
-![Text Description automatically
-generated](media/image10.png){width="6.5in"
-height="2.1666666666666665in"}
+<img src="media/image10.png" style="width:6.5in;height:2.16667in" alt="Text Description automatically generated" />
 
 **Database Security**
 
 MariaDB Security:
 
-![Graphical user interface, text, chat or text message Description
-automatically generated](media/image11.png){width="6.5in"
-height="2.1708333333333334in"}
+<img src="media/image11.png" style="width:6.5in;height:2.17083in" alt="Graphical user interface, text, chat or text message Description automatically generated" />
 
 **Fail2Ban**
 
 WS Fail2Ban:
 
-![Text Description automatically
-generated](media/image12.png){width="6.5in"
-height="0.9597222222222223in"}
+<img src="media/image12.png" style="width:6.5in;height:0.95972in" alt="Text Description automatically generated" />
 
 DB Fail2Ban
 
-![Graphical user interface Description automatically generated with
-medium confidence](media/image13.png){width="6.5in"
-height="0.9305555555555556in"}
+<img src="media/image13.png" style="width:6.5in;height:0.93056in" alt="Graphical user interface Description automatically generated with medium confidence" />
 
 LB Fail2Ban:
 
-![Text Description automatically generated with medium
-confidence](media/image14.png){width="6.5in"
-height="1.0215277777777778in"}
+<img src="media/image14.png" style="width:6.5in;height:1.02153in" alt="Text Description automatically generated with medium confidence" />
 
 **NGINX Security**
 
 Nginx.conf:
 
-![A screenshot of a computer Description automatically generated with
-medium confidence](media/image15.png){width="6.5in"
-height="2.4833333333333334in"}
+<img src="media/image15.png" style="width:6.5in;height:2.48333in" alt="A screenshot of a computer Description automatically generated with medium confidence" />
 
 Default.conf:
 
-![Graphical user interface, text Description automatically
-generated](media/image16.png){width="6.5in"
-height="1.2673611111111112in"}
+<img src="media/image16.png" style="width:6.5in;height:1.26736in" alt="Graphical user interface, text Description automatically generated" />
 
 **Django Security**
 
 Settings.py:
 
-![Graphical user interface, table Description automatically
-generated](media/image17.png){width="6.5in"
-height="2.4618055555555554in"}
+<img src="media/image17.png" style="width:6.5in;height:2.46181in" alt="Graphical user interface, table Description automatically generated" />
